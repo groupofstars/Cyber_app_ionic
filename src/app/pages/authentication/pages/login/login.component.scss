@@ -1,0 +1,12 @@
+::ng-deep .invalid div>.per-inpt {
+  border-radius: 33px;
+  box-shadow: 0 0 0px 1px var(--ion-color-danger);
+}
+
+::ng-deep .invalid div>.input-placeholder {
+  color: red !important;
+}
+
+ion-button {
+  --ion-color-primary: linear-gradient(90deg, rgba(180, 30, 81, 1) 0%, rgba(173, 31, 143, 1) 67%, rgba(78, 15, 98, 1) 100%) !important;
+}

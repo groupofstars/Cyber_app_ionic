@@ -1,0 +1,26 @@
+:host ::ng-deep input {
+    border: none;
+    outline: none;
+    width: 100%;
+
+}
+
+:host ::ng-deep ion-icon {
+    --size: small;
+}
+
+:host ::ng-deep ion-select {
+    min-height: unset !important;
+    padding: 0.1rem 0;
+    width: 100% !important;
+
+    .native-wrapper {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: space-between !important;
+    }
+}
+
+.input-bg {
+    background: linear-gradient(90deg, rgb(51 48 91 / 70%) 0%, rgba(253, 231, 255, 0.09) 100%) !important;
+}

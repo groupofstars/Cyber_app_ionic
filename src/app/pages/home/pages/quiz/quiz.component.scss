@@ -1,0 +1,112 @@
+// .un-ansver {
+//     ion-icon {
+//         opacity: 100;
+//     }
+// }
+
+.correct {
+    ion-icon {
+        opacity: 100;
+        color: green;
+    }
+}
+
+.misstake {
+    ion-icon {
+        opacity: 100;
+        color: red;
+
+    }
+}
+
+.title {
+    /* Title 01 */
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 27px;
+    /* identical to box height */
+    display: flex;
+    align-items: center;
+
+    /* Main Text */
+}
+
+.bg-segment {
+    background: linear-gradient(to right, #D6FCF9, #79fa6414);
+}
+
+.card-title {
+    /* Body 02 */
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+    display: flex;
+    align-items: center;
+
+    /* Main Text */
+}
+
+.card-sb-title {
+    /* Body 03 */
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 24px;
+    /* identical to box height, or 185% */
+    display: flex;
+    align-items: center;
+
+    /* Body Text */
+}
+
+.yuzde {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    display: flex;
+    align-items: center;
+
+    /* Body Text */
+}
+
+.yildiz {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+
+    /* Body Text */
+}
+
+.bg {
+    border-radius: 6px;
+}
+
+ion-button {
+    text-transform: none;
+}
+
+ion-segment-button {
+    text-transform: none;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.finish {
+    --ion-color-primary: var(--ion-background) !important;
+    transition: background-color 0.5s ease;
+}

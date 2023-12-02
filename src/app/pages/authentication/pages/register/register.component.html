@@ -1,0 +1,240 @@
+<blury-background></blury-background>
+<ion-content class="h-full">
+  <div *ngIf="formGroup"  [formGroup]="formGroup">
+    <div class="w-full mt-4">
+      <logo></logo>
+    </div>
+    <swiper-container [allowTouchMove]="false" #swiper (slidechange)="slideChange()" class="m-0 ">
+      <swiper-slide>
+        <ion-row class="mx-2">
+          <ion-col size="12" class="flex  justify-center">
+            <div class="w-full mb-1">
+              <icon-input [ngClass]="{'invalid':name.invalid && ( name.touched || name.dirty)}"
+               [placeholder]="'Name *'">
+                <ion-icon icon size="large" name="person-outline"></ion-icon>
+                <input type="text" formControlName="name" input />
+              </icon-input>
+            </div>
+          </ion-col>
+
+          <ion-col size="12" class="flex justify-center ">
+            <div class="w-full mb-1">
+              <icon-input [ngClass]="{'invalid':email.invalid && ( email.touched || email.dirty)}"
+                [placeholder]="'Email *'">
+                <ion-icon icon size="large" name="mail-outline"></ion-icon>
+                <input type="text" formControlName="email" input />
+              </icon-input>
+            </div>
+          </ion-col>
+
+          <ion-col size="12" class="flex justify-center">
+            <div class="w-full mb-1">
+              <icon-input #genderInput [ngClass]="{'invalid': prefix.invalid && ( prefix.touched || prefix.dirty)}"
+                [placeholder]="'Select Prefix *'">
+              {{formGroup.value | json}}
+
+                <ion-icon icon size="large" name="female-outline"></ion-icon>
+                <select select formControlName="prefix">
+                  <option value="mr">MR</option>
+                  <option value="miss">MISS/MRS</option>
+                </select>
+                <!-- <ion-select formControlName="prefix" select aria-label="Gender" >
+                  <ion-select-option [value]="'mr'">MR</ion-select-option>
+                  <ion-select-option [value]="'miss'"> </ion-select-option>
+                </ion-select> -->
+              </icon-input>
+            </div>
+          </ion-col>
+
+          <ion-col size="12" class="flex  justify-center ">
+            <div class="w-full mb-1">
+              <icon-input [ngClass]="{'invalid':dateOfBirth.invalid && ( dateOfBirth.touched || dateOfBirth.dirty)}"
+                [placeholder]="'Select Date Of Birth'">
+                <ion-icon icon size="large" name="calendar-outline"></ion-icon>
+                <input type="date" formControlName="dateOfBirth" input />
+              </icon-input>
+            </div>
+          </ion-col>
+        </ion-row>
+      </swiper-slide>
+      <swiper-slide>
+        <ion-row>
+          <ion-col size="12" class="flex justify-center">
+            <ion-row class="mx-2">
+              <ion-col size="12" class="flex  justify-center ">
+                <div class="w-full mb-1">
+                  <div class="w-full mb-1">
+                    <icon-input
+                      [ngClass]="{'invalid': selectcourse.invalid && ( selectcourse.touched || selectcourse.dirty)}"
+                      [placeholder]="'Select Course'">
+                      <ion-icon icon size="large" name="book-outline"></ion-icon>
+                      <select select formControlName="selectcourse">
+                        <option value="test 1">test 1</option>
+                        <option value="test 2">test 2</option>
+                        <option value="test 3">test 3</option>
+                      </select>
+                    </icon-input>
+                  </div>
+                </div>
+              </ion-col>
+
+              <ion-col size="12" class="flex justify-center ">
+                <div class="w-full mb-1">
+                  <icon-input [ngClass]="{'invalid':school.invalid && ( school.touched || school.dirty)}"
+                    [placeholder]="'School *'">
+                    <ion-icon icon size="large" name="school-outline"></ion-icon>
+                    <input type="text" formControlName="school" input />
+                  </icon-input>
+                </div>
+              </ion-col>
+
+              <ion-col size="12" class="flex justify-center">
+                <div class="w-full mb-1">
+                  <icon-input [ngClass]="{'invalid':notionality.invalid && ( notionality.touched || notionality.dirty)}"
+                    [placeholder]="'Notionality'">
+                    <ion-icon icon size="large" name="pin-outline"></ion-icon>
+                    <input type="text" formControlName="notionality" input />
+                  </icon-input>
+                </div>
+              </ion-col>
+
+              <ion-col size="12" class="flex  justify-center ">
+                <div class="w-full mb-1">
+                  <icon-input [ngClass]="{'invalid':occupation.invalid && ( occupation.touched || occupation.dirty)}"
+                    [placeholder]="'Occupation *'">
+                    <ion-icon icon size="large" name="business-outline"></ion-icon>
+                    <input type="text" formControlName="occupation" input />
+                  </icon-input>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </swiper-slide>
+      <swiper-slide>
+        <ion-row>
+          <ion-col size="12" class="flex justify-center">
+            <ion-row class="mx-2">
+              <ion-col size="12" class="flex  justify-center ">
+                <div class="w-full mb-1">
+                  <div class="w-full mb-1">
+                    <icon-input [ngClass]="{'invalid':postalCode.invalid && ( postalCode.touched || postalCode.dirty)}"
+                      [placeholder]="'Postal Code *'">
+                      <ion-icon icon size="large" name="pin-outline"></ion-icon>
+                      <input type="text" formControlName="postalCode" input />
+                    </icon-input>
+                  </div>
+                </div>
+              </ion-col>
+
+              <ion-col size="12" class="flex justify-center ">
+                <div class="w-full mb-1">
+                  <icon-input [ngClass]="{'invalid':phone.invalid && ( phone.touched || phone.dirty)}"
+                    [placeholder]="'Phone *'">
+                    <ion-icon icon size="large" name="call-outline"></ion-icon>
+                    <input type="text" formControlName="phone" input />
+                  </icon-input>
+                </div>
+              </ion-col>
+
+              <ion-col size="12" class="flex justify-center">
+                <div class="w-full mb-1">
+                  <icon-input [ngClass]="{'invalid':cityName.invalid && ( cityName.touched || cityName.dirty)}"
+                    [placeholder]="'City Name *'">
+                    <ion-icon icon size="large" name="trail-sign-outline"></ion-icon>
+                    <input type="text" formControlName="cityName" input />
+                  </icon-input>
+                </div>
+              </ion-col>
+
+              <ion-col size="12" class="flex justify-center ">
+                <div class="w-full mb-1">
+                  <icon-input
+                    [ngClass]="{'invalid':nid_birthCertificateNo_passportNo.invalid && ( nid_birthCertificateNo_passportNo.touched || nid_birthCertificateNo_passportNo.dirty)}"
+                    [placeholder]="'Nid BirthCertificate No Passport No *'">
+                    <ion-icon icon size="large" name="mail-open-outline"></ion-icon>
+                    <input type="number" formControlName="nid_birthCertificateNo_passportNo" input />
+                  </icon-input>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </swiper-slide>
+      <swiper-slide>
+        <ion-row>
+          <ion-col size="12" class="flex justify-center">
+            <ion-row class="mx-2">
+              <ion-col size="12" class="flex  justify-center ">
+                <div class="w-full mb-1">
+                  <div class="w-full mb-1">
+                    <icon-input [ngClass]="{'invalid':officeaddress.invalid && ( officeaddress.touched || officeaddress.dirty)}"
+                      [placeholder]="'Office Address *'">
+                      <ion-icon icon size="large" name="pin-outline"></ion-icon>
+                      <input type="text" formControlName="officeaddress" input />
+                    </icon-input>
+                  </div>
+                </div>
+              </ion-col>
+
+              <ion-col size="12" class="flex justify-center ">
+                <div class="w-full mb-1">
+                  <icon-input [ngClass]="{'invalid':address.invalid && ( address.touched || address.dirty)}"
+                    [placeholder]="'Address *'">
+                    <img ImageFallBack icon src="/assets/home-address.png" alt="">
+                    <input type="text" formControlName="address" input />
+                  </icon-input>
+                </div>
+              </ion-col>
+
+              <ion-col size="12" class="flex justify-center">
+                <div class="w-full mb-1">
+                  <icon-input [ngClass]="{'invalid':studentId_roll.invalid && ( studentId_roll.touched || studentId_roll.dirty)}"
+                    [placeholder]="'Student Id Roll'">
+                    <ion-icon icon size="large" name="trail-sign-outline"></ion-icon>
+                    <input type="text" formControlName="studentId_roll" input />
+                  </icon-input>
+                </div>
+              </ion-col>
+
+              <ion-col size="12" class="flex  justify-center ">
+                <div class="w-full mb-1">
+                  <icon-input [ngClass]="{'invalid':department.invalid && ( department.touched || department.dirty)}"
+                    [placeholder]="'Department'">
+                    <ion-icon icon size="large"  name="people-outline"></ion-icon>
+                    <input type="text" formControlName="department" input />
+                  </icon-input>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+        </ion-row>
+      </swiper-slide>
+    </swiper-container>
+
+    <div style="position: absolute; min-height: calc(20vh);;" class="w-full">
+      <ion-row class="flex items-baseline">
+        <ion-col size="6" class="flex justify-around">
+          <div class=" flex justify-between max-w-[100px]">
+            <div class="dot " [ngClass]="{'active': activeIndex == i}" *ngFor="let dot of [{},{},{},{}];let i = index">
+            </div>
+          </div>
+
+        </ion-col>
+        <ion-col size="6" class="flex justify-end">
+          <button class="btn" [ngClass]="{'hideme': activeIndex==3 ,'show':activeIndex!=3 }" 
+          (click)="slideNext()"
+            class="inline-flex items-center justify-center w-10 h-10 mr-1 transition-colors duration-150  rounded-full "
+            style="background-color: #4DC591;">
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </button>
+          <ion-button class="btn mr-5" (click)="login()" 
+          [ngClass]="{'show':activeIndex==3}">
+          Sign Up
+        </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

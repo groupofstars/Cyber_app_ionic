@@ -1,0 +1,75 @@
+<slide-header>
+  <div class="pt-5 pb-3 animate__animated animate__bounceInDown">
+    <ion-row>
+      <ion-col size="8">
+        <h1 class="title ml-10">Chating</h1>
+      </ion-col>
+      <ion-col size="4">
+        <!-- <div class="flex justify-end mr-4 opacity-0">
+            <div>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M11.7666 20.7551C16.7309 20.7551 20.7552 16.7308 20.7552 11.7666C20.7552 6.80233 16.7309 2.77802 11.7666 2.77802C6.80239 2.77802 2.77808 6.80233 2.77808 11.7666C2.77808 16.7308 6.80239 20.7551 11.7666 20.7551Z"
+                  stroke="#9295A3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path opacity="0.4" d="M18.0183 18.4851L21.5423 22" stroke="#9295A3" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div class="ml-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 3H2L10 12.46V19L14 21V12.46L22 3Z" stroke="#9295A3" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div> -->
+      </ion-col>
+    </ion-row>
+  </div>
+</slide-header>
+
+<ion-content #content [fullscreen]="false" class="animate__bounceInUp animate__animated">
+  <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200"  (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+  <section class="flex w-full flex-col justify-center antialiased bg-[var(--ion-background) p-4">
+    <div class="h-full w-full" *ngIf="messages && messages.length>0;else notfound">
+      
+      <!-- Card body -->
+      <div>
+        <!-- Chat list -->
+        <div *ngFor="let item of messages"
+        [routerLink]="'/chating/'+item.id"
+        class="bg-[var(--solid-background)] center items-center rounded-lg my-2 flex p-2">
+          <div>
+              <ion-avatar class="flex items-center">
+                <img ImageFallBack  style="height: 50px;
+                object-fit: fill;
+                width: 50px;" [src]="item.image" alt="" srcset="">
+              </ion-avatar>
+          </div>
+          <div>
+            <div class="w-full">
+              <div class=" line-clamp-1 w-3/4">
+                {{item.title }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #notfound>
+      <div class="flex w-full justify-center absolute top-2/4">
+        <p>
+          There are no messages.
+        </p>
+      </div>
+    </ng-template>
+  </section>
+</ion-content>
+<!-- Bottom right button -->
+<!-- <button
+    class="absolute bg-[#4DC591] bottom-5 right-5 inline-flex items-center text-sm  rounded-full text-center px-3 py-3 shadow-lg focus:outline-none focus-visible:ring-2">
+    <ion-icon size="large" color="light" name="add-outline"></ion-icon>
+  </button> -->

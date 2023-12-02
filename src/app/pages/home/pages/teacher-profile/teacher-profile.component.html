@@ -1,0 +1,123 @@
+<slide-header class="shadow-none animate__bounceInDown animate__animated -mt-9">
+  <div class="pt-5 pb-5">
+    <div>
+      <ion-button fill="clear" (click)="back()" class="ml-8 relative top-16">
+        <ion-icon size="large" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </div>
+    <div class="flex justify-center" style="margin-top: -29px;">
+      <div>
+        <div class="flex justify-center">
+          <ion-avatar class="flex justify-center w-32 h-32">
+            <img ImageFallBack [src]="teacher && teacher.picture" />
+          </ion-avatar>
+        </div>
+        <div class="flex justify-center">
+          <h1 class="avt-title"> {{ teacher && teacher.fullName }} </h1>
+        </div>
+        <div class="flex justify-center">
+          <h6 class="avt-sb-title font-bold">Teacher</h6>
+        </div>
+      </div>
+    </div>
+
+
+    <div>
+      <ion-row>
+        <ion-col>
+          <!-- <ion-row>
+            <ion-col size="12">
+              <div class="hd-icon flex justify-center">
+                <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="28" cy="28" r="28" fill="#FFF9ED" />
+                  <path
+                    d="M27.0825 18.6157C27.4307 17.8129 28.5693 17.8129 28.9175 18.6157L31.0238 23.4732C31.1687 23.8073 31.4838 24.0363 31.8464 24.0708L37.117 24.573C37.9882 24.6561 38.34 25.7389 37.684 26.3181L33.7152 29.8224C33.4422 30.0635 33.3218 30.4339 33.401 30.7894L34.5521 35.9573C34.7423 36.8115 33.8212 37.4807 33.0676 37.0358L28.5084 34.3441C28.1948 34.159 27.8052 34.159 27.4916 34.3441L22.9324 37.0358C22.1788 37.4807 21.2577 36.8115 21.4479 35.9573L22.599 30.7894C22.6782 30.4339 22.5578 30.0635 22.2848 29.8224L18.316 26.3181C17.66 25.7389 18.0118 24.6561 18.883 24.573L24.1536 24.0708C24.5162 24.0363 24.8313 23.8073 24.9762 23.4732L27.0825 18.6157Z"
+                    fill="#FFC34E" />
+                </svg>
+              </div>
+            </ion-col>
+            <ion-col size="12">
+              <div class="hd-number flex justify-center">
+                <h1 class="font-bold text-2xl">193,79</h1>
+              </div>
+            </ion-col>
+            <ion-col size="12">
+              <div class="hd-title flex justify-center">
+                <p>Points</p>
+              </div>
+            </ion-col>
+          </ion-row> -->
+        </ion-col>
+        <ion-col>
+          <ion-row>
+            <ion-col size="12">
+              <div class="hd-icon flex justify-center">
+                <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="28" cy="28" r="28" fill="#FFF1F1" />
+                  <path
+                    d="M35 18H23C22.2044 18 21.4413 18.3161 20.8787 18.8787C20.3161 19.4413 20 20.2044 20 21V35C20 35.7956 20.3161 36.5587 20.8787 37.1213C21.4413 37.6839 22.2044 38 23 38H35.5C35.6326 38 35.7598 37.9473 35.8536 37.8536C35.9473 37.7598 36 37.6326 36 37.5V19C36 18.7348 35.8946 18.4804 35.7071 18.2929C35.5196 18.1054 35.2652 18 35 18ZM23 22.5C23 22.3674 23.0527 22.2402 23.1464 22.1464C23.2402 22.0527 23.3674 22 23.5 22H32.5C32.6326 22 32.7598 22.0527 32.8536 22.1464C32.9473 22.2402 33 22.3674 33 22.5V23.5C33 23.6326 32.9473 23.7598 32.8536 23.8536C32.7598 23.9473 32.6326 24 32.5 24H23.5C23.3674 24 23.2402 23.9473 23.1464 23.8536C23.0527 23.7598 23 23.6326 23 23.5V22.5ZM23 26.5C23 26.3674 23.0527 26.2402 23.1464 26.1464C23.2402 26.0527 23.3674 26 23.5 26H28.5C28.6326 26 28.7598 26.0527 28.8536 26.1464C28.9473 26.2402 29 26.3674 29 26.5V27.5C29 27.6326 28.9473 27.7598 28.8536 27.8536C28.7598 27.9473 28.6326 28 28.5 28H23.5C23.3674 28 23.2402 27.9473 23.1464 27.8536C23.0527 27.7598 23 27.6326 23 27.5V26.5ZM22 35C22 34.7348 22.1054 34.4804 22.2929 34.2929C22.4804 34.1054 22.7348 34 23 34H34V36H23C22.7348 36 22.4804 35.8946 22.2929 35.7071C22.1054 35.5196 22 35.2652 22 35Z"
+                    fill="#FE7272" />
+                </svg>
+              </div>
+            </ion-col>
+            <ion-col size="12">
+              <div class="hd-number flex justify-center">
+                <h1 class="font-bold text-2xl">{{teacher?.courseCount}}</h1>
+              </div>
+            </ion-col>
+            <ion-col size="12">
+              <div class="hd-title flex justify-center">
+                <p>Course</p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          <!-- <ion-row>
+            <ion-col size="12">
+              <div class="hd-icon flex justify-center">
+                <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="28" cy="28" r="28" fill="#EDF6FF" />
+                  <g clip-path="url(#clip0_2_11782)">
+                    <path
+                      d="M38 28C38 27.4477 38.4477 27 39 27C39.5523 27 40 27.4477 40 28V32C40 32.5523 39.5523 33 39 33C38.4477 33 38 32.5523 38 32V28Z"
+                      fill="#50A8FF" />
+                    <path
+                      d="M29.241 31.73C28.847 31.91 28.43 32 28 32C27.57 32 27.153 31.91 26.76 31.731L20 28.658V34C20 36.626 24.024 38 28 38C31.976 38 36 36.626 36 34V28.659L29.241 31.73Z"
+                      fill="#50A8FF" />
+                    <path
+                      d="M39.414 23.09L28.414 18.09C28.2841 18.0312 28.1431 18.0008 28.0005 18.0008C27.8579 18.0008 27.7169 18.0312 27.587 18.09L16.587 23.09C16.4113 23.1685 16.2622 23.2962 16.1574 23.4576C16.0527 23.619 15.9969 23.8073 15.9968 23.9997C15.9967 24.1921 16.0523 24.3804 16.1568 24.5419C16.2614 24.7035 16.4104 24.8313 16.586 24.91L27.586 29.91C27.716 29.9691 27.8572 29.9997 28 29.9997C28.1428 29.9997 28.284 29.9691 28.414 29.91L39.414 24.91C39.5893 24.8311 39.738 24.7032 39.8424 24.5418C39.9467 24.3803 40.0022 24.1922 40.0022 24C40.0022 23.8078 39.9467 23.6196 39.8424 23.4582C39.738 23.2968 39.5893 23.1689 39.414 23.09Z"
+                      fill="#50A8FF" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_2_11782">
+                      <rect width="24" height="24" fill="white" transform="translate(16 16)" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+            </ion-col>
+            <ion-col size="12">
+              <div class="hd-number flex justify-center">
+                <h1 class="font-bold text-2xl">38</h1>
+              </div>
+            </ion-col>
+            <ion-col size="12">
+              <div class="hd-title flex justify-center">
+                <p>Ranks</p>
+              </div>
+            </ion-col>
+          </ion-row> -->
+        </ion-col>
+      </ion-row>
+    </div>
+
+
+  </div>
+</slide-header>
+<ion-content class="animate__bounceInUp animate__animated" *ngIf="authServ.isloged && !authServ.isTeacher">
+
+  <div class="flex justify-between px-8 absolute left-0 bottom-8 w-full">
+    <ion-button (click)="chat()" class="flex-auto mr-2 shadow-none ">Message</ion-button>
+  </div>
+</ion-content>

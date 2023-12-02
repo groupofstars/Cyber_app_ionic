@@ -1,0 +1,58 @@
+[
+    {
+        "icon": "Muktar-Ahmad-Icon_UI-UX-Graphics-Design",
+        "title": "UI/UX & Graphics Design",
+        "description": "Craft user-friendly interfaces using cutting-edge UX/UI best practices. With a dedicated design process, punctual delivery, and expert craftsmanship, TechDefenders Hub's UI/UX services bring your vision to life.” please make sure to add photo-like arena web security."
+    },
+    {
+        "icon": "Muktar-Ahmad-Icon_Digital-Marketing-",
+        "title": "Digital Marketing",
+        "description": "Enhance your brand reputation across online channels through our digital marketing expertise. From Facebook marketing to email campaigns and video marketing, we enhance consumer engagement and conversion rates."
+    },
+    {
+        "icon": "Muktar-Ahmad-Icon_SEO-Search-Engine-Optimization",
+        "title": "SEO (Search Engine Optimization)",
+        "description": "Experience the power of strategic SEO campaigns tailored to Google's algorithm. Elevate your website's ranking by optimizing various ranking factors, and showcasing your content's value to search engines."
+    },
+    {
+        "icon": "Muktar-Ahmad-Icon_Ecommerce-Solutions",
+        "title": "Ecommerce Solutions",
+        "description": "Transform your eCommerce venture with our performance-driven development services. From optimizing SEO strategies for top-selling products to enhancing performance and security, we provide a holistic solution for scaling your online store."
+    },
+    {
+        "icon": "Muktar-Ahmad-Icon_Mobile-App-Development",
+        "title": "Mobile App Development",
+        "description": "Leverage our experienced mobile app developers to create cutting-edge applications that meet global standards. With in-depth market analysis, forecasts, and stunning design, we craft top-tier mobile apps that resonate with users worldwide."
+    },
+    {
+        "icon": "Muktar-Ahmad-Icon_Network-Security-Services-NSS",
+        "title": "Network Security Services (NSS)",
+        "description": "Our Network Security Services (NSS) offer cross-platform support for security-enabled applications. With SSL, TLS, PKCS, S/MIME, and X.509 v3 certificates, NSS provides a foundation for robust security across client-server applications."
+    },
+    {
+        "icon": "Muktar-Ahmad-Icon_Software-Development",
+        "title": "Software Development",
+        "description": "Experience a comprehensive suite of software development services tailored to your requirements. From software consulting to cloud migration, our team excels in crafting solutions for mid and large enterprises, as well as software product companies across diverse industries."
+    },
+
+    {
+        "icon": "Muktar-Ahmad-Icon_Software-Maintenance",
+        "title": "Software Maintenance",
+        "description": "TechDefenders Hub is your go-to destination for comprehensive software maintenance. Our trusted professionals are dedicated to enhancing and sustaining your existing applications. Benefit from our experts' deep expertise in application maintenance services, ensuring the longevity of your software investments."
+    },
+    {
+        "icon": "Muktar-Ahmad-Icon_Vulnerability-Assessment-Penetration",
+        "title": "Vulnerability Assessment & Penetration Testing (VAPT)",
+        "description": "Our VAPT services encompass a spectrum of security assessment solutions tailored to unearth vulnerabilities across your IT infrastructure. Understanding your organization's unique needs, we aid in addressing cybersecurity exposures, and enhancing your digital defense strategy."
+    },
+    {
+        "icon": "Muktar-Ahmad-Icon_Software-Testing",
+        "title": "Software Testing",
+        "description": "Discover a comprehensive array of testing services encompassing Web Application & Website Testing, Manual and Automated Testing, Mobile Testing, Security and Penetration Testing, and more. From QA to DevOps, we offer end-to-end Independent QA and Managed Testing services across diverse platforms."
+    },
+    {
+        "icon": "Muktar-Ahmad-Icon_Cybersecurity-Consultancy",
+        "title": "Cybersecurity Consultancy",
+        "description": "Cyberattacks are an unavoidable reality in the digital landscape. Our Cybersecurity and Risk Services provide proactive solutions to stay ahead of these threats, fostering confidence among your customers. Our holistic approach prioritizes risk reduction, prevention, and loss control, ensuring your digital environment remains secure."
+    }
+]

@@ -1,0 +1,34 @@
+<ion-header class="shadow-none animate__bounceInDown animate__animated">
+  <ion-tolbar>
+    <div class="w-full   pt-3 px-6 flex justify-between items-center">
+      <ion-icon (click)="back()" size="large" name="chevron-back-outline"></ion-icon>
+      <img ImageFallBack class="h-[10rem]" [src]="info.image">
+
+      <ion-icon class="opacity-0" (click)="addFavorite()" [color]="favorite?'warning':''" size="large"
+        name="{{favorite?'bookmark':'bookmark-outline'}}"></ion-icon>
+    </div>
+
+
+
+  </ion-tolbar>
+
+
+</ion-header>
+
+<ion-content [scrollY]="false" class="animate__bounceInUp animate__animated   " style="  pointer-events: none;">
+
+
+  <div class="content-bg h-full overflow-auto px-5 mt-5" style="  pointer-events: auto;">
+
+    <div>
+      <p class="  pt-5 border-b text-[22px] font-medium "> {{info.title}} </p>
+    </div>
+
+    <p class="ml-2 mb-3 text-md   ">{{info.description}} </p>
+    <div>
+
+    </div>
+
+
+  </div>
+</ion-content>

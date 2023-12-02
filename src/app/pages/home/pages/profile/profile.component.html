@@ -1,0 +1,300 @@
+<slide-header class="shadow-none animate__bounceInDown animate__animated">
+  <div class="pt-4 pb-2">
+    <ion-row>
+      <ion-col size="8">
+        <div class="flex justify-start ml-3">
+          <h1 class="title ml-5 mr-2 mt-2">Profile</h1>
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div *ngIf="isloged" (click)="isLoginModal = true" id="logout-modal" class="flex justify-end mr-3">
+          <img ImageFallBack class="w-11 mb-1 mt-1 mr-2" src="/assets/switch.png">
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+</slide-header>
+
+<ion-content class="mb-4" #content [fullscreen]="false" class="animate__bounceInUp animate__animated">
+  <ion-row>
+    <ion-col size="12">
+      <ion-row>
+        <ion-col size="12">
+          <div class="flex justify-center w-full">
+            <ion-row>
+              <ion-col size="12">
+                <ion-avatar class="opacity-0" class="flex justify-center" (click)="imgInput.click()">
+                  <input accept="image/*" [disabled]="processing" type="file" #imgInput class="ion-hide"
+                    (change)="uploadProfileImg(imgInput)">
+                  <img ImageFallBack [src]="profilData?.picture"
+                    *ngIf="!processing && profilData?.picture;else defaultImage" />
+                  <ng-template #defaultImage>
+                    <ion-icon class="text-6xl" name="person-circle-outline"></ion-icon>
+                  </ng-template>
+                </ion-avatar>
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+        <div class="flex justify-center w-full">
+          <ion-row>
+            <ion-col size="12">
+              <div class="mt-2 flex justify-center">
+                <h1 class="title text-center">{{user.name}} {{user.lastname}}</h1>
+              </div>
+            </ion-col>
+            <ion-col size="12">
+              <div class="flex justify-center">
+                <div class="vip text-center px-4">
+                  {{user.role | titlecase}}
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+
+  <div class="mt-20">
+    <ion-row>
+      <ion-col>
+        <h1 class="opacity-60">Account</h1>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <!-- <div class="ion-activatable ripple-parent rounded-rectangle">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div class="flex justify-between items-center profile-card bg-[var(--ion-background)]">
+          <div>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="24" fill="#fff" fill-opacity="0.1" />
+              <path d="M17 34V14L32 24L17 34Z" stroke="#fff" stroke-width="2" stroke-miterlimit="10"
+                stroke-linecap="square" />
+            </svg>
+          </div>
+          <div class="flex-auto ml-8">
+            <h1 class="profile-card-title">My Courses</h1>
+          </div>
+          <div>
+            <div>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.00006 5L16.0001 12L9.00006 19" stroke="#fff" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div> -->
+        <div routerLink="/home/settings" class="ion-activatable ripple-parent rounded-rectangle">
+          <ion-ripple-effect></ion-ripple-effect>
+          <div class="flex justify-between items-center profile-card bg-[var(--ion-background)]">
+            <div>
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="24" fill="#9BA1FF" fill-opacity="0.1" />
+                <g clip-path="url(#clip0_2_12027)">
+                  <path d="M23.243 24.757L34 14" stroke="#fff" stroke-width="2" stroke-miterlimit="10"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M31 17L34 20L31 23L28 20" stroke="#fff" stroke-width="2" stroke-miterlimit="10"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                  <path
+                    d="M23.2424 33.2425C25.5855 30.8994 25.5855 27.1004 23.2424 24.7573C20.8993 22.4142 17.1003 22.4142 14.7572 24.7573C12.4141 27.1004 12.4141 30.8994 14.7572 33.2425C17.1003 35.5856 20.8993 35.5856 23.2424 33.2425Z"
+                    stroke="#fff" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_2_12027">
+                    <rect width="24" height="24" fill="white" transform="translate(12 12)" />
+                  </clipPath>
+                </defs>
+              </svg>
+
+            </div>
+            <div class="flex-auto ml-8">
+              <h1 class="profile-card-title">Change Password</h1>
+            </div>
+            <div>
+              <div>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.00006 5L16.0001 12L9.00006 19" stroke="#fff" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="class-date-modal" *ngIf="!isteacher" class="ion-activatable ripple-parent rounded-rectangle">
+          <ion-ripple-effect></ion-ripple-effect>
+          <div class="flex justify-between items-center profile-card bg-[var(--ion-background)]">
+            <div class="mt-1">
+              <ion-icon size="large" class="ml-2" name="school-outline"></ion-icon>
+            </div>
+            <div class="flex-auto ml-8">
+              <h1 class="profile-card-title">Class Attendance</h1>
+            </div>
+            <div>
+              <div>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.00006 5L16.0001 12L9.00006 19" stroke="#fff" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="open-modal"  *ngIf="!isteacher" class="ion-activatable ripple-parent rounded-rectangle">
+          <ion-ripple-effect></ion-ripple-effect>
+          <div class="flex justify-between items-center profile-card bg-[var(--ion-background)]">
+            <div class="mt-1">
+              <ion-icon size="large" name="document-attach-outline" class="ml-2"></ion-icon>
+            </div>
+            <div class="flex-auto ml-8">
+              <h1 class="profile-card-title"> Submit Assignments</h1>
+            </div>
+            <div>
+              <div>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.00006 5L16.0001 12L9.00006 19" stroke="#fff" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div routerLink="/home/contact" class="ion-activatable ripple-parent rounded-rectangle">
+          <ion-ripple-effect></ion-ripple-effect>
+          <div class="flex justify-between items-center profile-card bg-[var(--ion-background)]">
+            <div class="mt-1">
+              <ion-icon size="large" class="ml-2" name="mail-outline"></ion-icon>
+            </div>
+            <div class="flex-auto ml-8">
+              <h1 class="profile-card-title">Contact Us</h1>
+            </div>
+            <div>
+              <div>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.00006 5L16.0001 12L9.00006 19" stroke="#fff" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <!-- Date Class Attendance modal -->
+  <ion-modal #modalAttendance trigger="class-date-modal" [initialBreakpoint]="0.50" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+    <ng-template>
+      <ion-content>
+        <ion-searchbar [(ngModel)]="search" class="text-[var(--my-content-text-color)]" placeholder="Search"
+          (ionFocus)="modalAttendance.setCurrentBreakpoint(0.75)" (ionBlur)="modalAttendance.setCurrentBreakpoint(0.5)"></ion-searchbar>
+        <ion-list>
+
+          <ion-item *ngFor="let item of getItems()" (click)="setDate(item)">
+            <ion-avatar slot="start">
+              <ion-img [src]="item.course&&item.course.feature_banner"></ion-img>
+            </ion-avatar>
+            <ion-label>
+              <h2>{{item.course&&item.course.title ?? 'Name'}}</h2>
+              <p>{{(item.course &&item.course.description|slice:0:30)??"Tech Defenders Hub" }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!-- Class Attendance modal -->
+  <ion-modal #classModal trigger="open-modal" [initialBreakpoint]="0.50" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+    <ng-template>
+      <ion-content>
+        <ion-searchbar [(ngModel)]="search" class="text-[var(--my-content-text-color)]" placeholder="Search"
+          (click)="modal.setCurrentBreakpoint(0.75)"></ion-searchbar>
+        <ion-list>
+
+          <ion-item *ngFor="let item of getItems()" (click)="selectedCourse=item ;AttacnceimgInput.click()">
+
+            <input accept="image/*" [disabled]="FileProcessing" type="file" #AttacnceimgInput class="ion-hide"
+              (change)="uploadFile(AttacnceimgInput)">
+            <ion-avatar slot="start">
+              <ion-img [src]="item.course&&item.course.feature_banner"></ion-img>
+            </ion-avatar>
+            <ion-label>
+              <h2>{{item.course&&item.course.title ?? 'Name'}}</h2>
+              <p>{{(item.course &&item.course.description|slice:0:30)??"Tech Defenders Hub" }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!-- date -->
+  <ion-modal #dateModal [initialBreakpoint]="0.25" trigger="open-date" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar class="bg-[var(--ion-backdrop-color, #000);]">
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title class="text-sm sm:text-xl text-center">Class Attendance</ion-title>
+          <ion-buttons slot="end">
+            <ion-button class="confirm-btn" (click)="dateModal.isOpen=false;submitAssigment()"
+              [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <div class="mt-6 mx-6">
+          <!-- <input [max]="maxDate | date: 'yyyy-MM-dd'"
+            class="w-full h-11 rounded-full p-7 text-white bg-[var(--ion-background)]" type="date"
+            [(ngModel)]="dataTime" /> -->
+          <ion-datetime-button size="large" datetime="datetime" color="tertiary"></ion-datetime-button>
+
+          <ion-modal [keepContentsMounted]="true">
+            <ng-template>
+              <ion-datetime (ngModel)="attendanceDate" presentation="date" id="datetime"></ion-datetime>
+            </ng-template>
+          </ion-modal>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!-- logout modal -->
+  <ion-modal #logoutModal trigger="logout-modal" [isOpen]="isLoginModal" [initialBreakpoint]="0.30"
+    [breakpoints]="[0, 0.25, 0.5, 0.75]">
+    <ng-template>
+      <ion-content>
+        <ion-list>
+          <ion-item>
+            <ion-label>
+              <div class="flex justify-center text-2xl font-semibold">
+                Do you want to logout?
+              </div>
+              <div>
+                <ion-row class="mt-12">
+                  <ion-col>
+                    <ion-button (click)="logout()" size="large" expand="block" fill="outline">
+                      Logout
+                    </ion-button>
+                  </ion-col>
+                  <ion-col>
+                    <ion-button (click)="cancel()" size="large" expand="block">
+                      Go Back
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>

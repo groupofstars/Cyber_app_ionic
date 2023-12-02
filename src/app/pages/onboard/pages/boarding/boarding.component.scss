@@ -1,0 +1,60 @@
+.dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+
+    border-radius: 50%;
+    /* Secondary */
+    background: #9BA1FF;
+    opacity: 0.2;
+    transition: all .2s ease-in-out;
+
+
+}
+
+.active {
+    border-radius: 20px;
+    width: 40px;
+
+    transition: all .2s ease-in-out;
+}
+
+// .show {
+//     transform: scale(1);
+//     transition-delay: .2s;
+//     transition: all .2s ease-in-out;
+//     z-index: 105;
+// }
+
+// .hide-translatio {
+//     transform: scale(0);
+//     transition: all .2s ease-in-out;
+// }
+.btn-parent {
+    display: flex;
+    width: 177px;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.btn {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0);
+}
+
+
+
+
+.show {
+    opacity: 1;
+    transform: scale(1);
+    transition: all .2s ease-in-out;
+}
+
+.hideme {
+    opacity: 0;
+    transform: scale(0);
+    transition: all .2s ease-in-out;
+}

@@ -1,0 +1,11 @@
+<div (click)="onclick.emit(item)" class="w-[10rem] bg-[var(--solid-background)] rounded-lg shadow h-52 pt-3 px-3 ">
+  <div class="flex justify-center ">
+    <img ImageFallBack
+      [src]="item && item.picture?  domSanit.bypassSecurityTrustUrl(item.picture) :'https://ionicframework.com/docs/img/demos/card-media.png'"
+      class="h-36 w-full self-baseline" alt="">
+  </div>
+
+
+  <h5 class="mt-4 text-md  tracking-tight font-medium text-center">
+    {{(item.fullName && item.fullName.length > 50) ? ((item.fullName | slice:0:50 )+"..."):(item.fullName)}} </h5>
+</div>

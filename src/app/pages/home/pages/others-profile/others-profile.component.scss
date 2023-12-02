@@ -1,0 +1,76 @@
+.avt-title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+
+    /* Main Text */
+}
+
+.avt-sb-title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.hd-number {
+    /* Title 02 */
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+
+    /* Main Text */
+}
+
+.hd-title {
+    /* Body 02 */
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    /* Body Text */
+}
+
+.card {
+    background: #ffffff;
+    height: 70px;
+    border-radius: 10px;
+    box-shadow: 0 0 3px 0px #c6bcbc;
+
+    .card-title {
+        /* Body 01 */
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        /* identical to box height, or 150% */
+
+        /* Main Text */
+
+        opacity: 0.9;
+
+    }
+
+    .card-sb-title {
+        /* Body 02 */
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+
+
+        opacity: 0.6;
+    }
+}

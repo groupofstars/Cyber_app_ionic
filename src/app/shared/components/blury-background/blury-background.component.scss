@@ -1,0 +1,77 @@
+.blure {
+    background-color: rgb(0, 0, 0);
+    width: 100vw;
+    height: 100vh;
+    /* Blur Elements */
+    position: absolute;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.E949 {
+    /* right top*/
+    /* Ellipse 949 */
+
+    position: absolute;
+    width: 236px;
+    height: 236px;
+    right: 50px;
+    top: 0;
+
+    background: #2a3d27;
+
+
+    filter: blur(55px);
+
+
+}
+
+.E951 {
+
+    /* left bottom*/
+    /* Ellipse 951 */
+
+    position: absolute;
+    width: 249px;
+    height: 249px;
+    left: 70px;
+    bottom: 50px;
+
+    background: #56295c;
+
+
+    filter: blur(55px);
+
+
+
+}
+
+.E950 {
+    /*left top*/
+    /* Ellipse 950 */
+
+    position: absolute;
+    width: 261px;
+    height: 261px;
+    left: -19px;
+    top: 53px;
+
+    background: #190a1f;
+
+    filter: blur(55px);
+}
+
+.E948 {
+    /* Right bottom*/
+    /* Ellipse 948 */
+
+    position: absolute;
+    width: 266px;
+    height: 266px;
+    bottom: -84px;
+    right: -50px;
+
+    background: #092128;
+
+    filter: blur(55px);
+}

@@ -1,0 +1,14 @@
+<ion-card class="  " style="max-width: 15rem;">
+  <div class="flex justify-center pt-2">
+    <img ImageFallBack class="max-w-[70%] sm:max-w-[50%]" [src]="icon" />
+  </div>
+ 
+
+  <ion-card-content>
+    <ion-card-title class="text-base max-w-xs overflow-ellipsis line-clamp-1">{{cardTitle}}</ion-card-title>
+    <ion-card-subtitle>{{cardSubtitle}}</ion-card-subtitle>
+    <div class=" text-sm max-w-prose ... overflow-ellipsis line-clamp-5">
+      {{content}}
+    </div>
+  </ion-card-content>
+</ion-card>

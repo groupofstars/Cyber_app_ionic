@@ -1,0 +1,13 @@
+<!-- <div (click)="onclick.emit(item)" style=" background: var(--my-card-background)" -->
+<div (click)="onclick.emit(item)" style=" background: var(--solid-background)" *ngIf="item"
+  class="w-[8rem]  h-[10rem]  rounded-lg shadow ">
+  <div class="flex justify-center">
+    <img ImageFallBack
+      [src]="item && item.feature_banner? domSanit.bypassSecurityTrustUrl(item.feature_banner) :'https://ionicframework.com/docs/img/demos/card-media.png'"
+      class="h-24 self-baseline" alt="">
+
+  </div>
+  <h5 class="mt-1 text-sm  tracking-tight font-medium px-1 ">
+    {{(item.title && item.title.length > 30) ? ((item.title | slice:0:30 )+"..."):(item.title)??'Name'}} </h5>
+  <p class="font-light text-xs text-[var(--my-content-text-color)] px-1"> Tech Defenders Hub </p>
+</div>

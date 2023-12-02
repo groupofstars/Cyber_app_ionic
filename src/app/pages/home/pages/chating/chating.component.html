@@ -1,0 +1,90 @@
+<slide-header class="-mt-1 animate__bounceInDown animate__animated">
+  <ion-tolbar class="mb-3">
+    <div class="content-bg px-4 mb-3  flex justify-between items-center pb-2">
+      <ion-icon color="light" (click)="back()" size="large" class="w-12 mr-3 mt-5" name="chevron-back"></ion-icon>
+      <div class="flex-auto">
+        <p class="pt-5 text-lg text-[var(--color)] "> {{chat?.title}} </p>
+        <!-- <div class="flex items-center">
+          <ion-icon color="primary" name="ellipse"></ion-icon>
+          <p class="pl-1 text-sm text-[var(--color)]">Active</p>
+        </div> -->
+      </div>
+      <!-- <div>
+      <ion-button fill="clear" class="h-5 mt-9" shape="round" (click)="LeaveChatStatus = !LeaveChatStatus;">
+        <ion-icon color="light" size="large" name="ellipsis-horizontal-outline"></ion-icon>
+      </ion-button>
+     </div> -->
+    </div>
+  </ion-tolbar>
+</slide-header>
+
+
+
+
+<ion-content class="bg" #content [fullscreen]="false" [scrollX]="false" class="animate__bounceInUp animate__animated">
+
+
+
+  <div>
+    <div class="flex flex-col items-center justify-center w-100   pb-10">
+      <!-- Component Start -->
+      <div class="flex flex-col flex-grow w-full rounded-l-lg rounded-br-lg">
+        <div class="flex flex-col flex-grow px-2" *ngFor="let item of messages">
+          <!-- my -->
+          <div class="flex w-full mt-4 space-x-3 max-w-xs -mr-6 ml-4" *ngIf="!item.isOur">
+            <div>
+              <ion-avatar>
+                <img ImageFallBack class="w-11 h-11 object-cover mt-1" src="{{item.sender.picture}}" alt="" srcset="">
+              </ion-avatar>
+            </div>
+            <div>
+              <div class="bg-[var(--ion-background)] p-3 rounded-l-lg rounded-br-lg">
+                <div class="w-full text-sm text-[var(--ion-color-primary)]">
+                  {{item.sender.fullName}}
+                </div>
+                <p class="text-xs  break-all"> {{item.message}} </p>
+              </div>
+              <!-- <span class="text-xs  leading-none">{{item.created |date : 'full'}}</span> -->
+            </div>
+          </div>
+          <!-- he -->
+
+          <div class="flex w-full mt-4 space-x-3 max-w-xs ml-auto justify-end" *ngIf="item.isOur">
+            <div>
+              <div class="bg-[var(--ion-background)] p-3 rounded-l-lg rounded-br-lg">
+                <div class="w-full text-sm text-[var(--ion-color-primary)]">
+                  {{item.sender.fullName}}
+                </div>
+                <p class="text-xs break-all"> {{item.message}} </p>
+              </div>
+              <!-- <span class="text-xs  leading-none mt-2">{{item.created |date : 'full':'full'}}</span> -->
+            </div>
+            <div>
+              <ion-avatar>
+                <img ImageFallBack class="w-11 h-11 object-cover " src="{{item.sender.picture}}" alt="" srcset="">
+              </ion-avatar>
+            </div>
+          </div>
+          <!-- Component End  -->
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <div class="bg-[var(--ion-background)] backdrop-blur-md   p-4 flex justify-between items-center h-14">
+    <!-- <ion-icon size="large" color="primary" class="mr-3" name="add"></ion-icon> -->
+    <input [multiple]="true" (keyup.enter)="sentMassage()" #messageInput [formControl]="messageFormControll"
+      class="flex msg-inp focus:!outline-none focus-within:!outline-none items-center h-10 w-full rounded-full px-3 text-sm text-[var(--ion-color)] bg-[var(--ion-background)] backdrop-blur-md " type="text"
+      placeholder="Type your message…">
+    <ion-icon (click)="messageInput.focus();sentMassage();" class="ml-3 -rotate-45" size="large" color="primary" name="send"></ion-icon>
+  </div>
+</ion-footer>
+<!-- <div class="absolute top-12 right-4" *ngIf="LeaveChatStatus">
+  <div class="w-30 h-20 bg-[var(--ion-background)] rounded-lg ml-1">
+    <ion-button fill="clear" class="mt-9">
+      Leave the chat.
+    </ion-button>
+  </div>
+</div> -->

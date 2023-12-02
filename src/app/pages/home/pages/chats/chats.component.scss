@@ -1,0 +1,24 @@
+.content-bg {
+    background: #fffefe;
+    width: 100%;
+    border-bottom: 1px solid #d4d4d4a0;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+
+
+
+ion-segment-button {
+    text-transform: none;
+}
+.title {
+    /* Title 01 */
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 27px;
+    /* identical to box height */
+    display: flex;
+    align-items: center;
+}

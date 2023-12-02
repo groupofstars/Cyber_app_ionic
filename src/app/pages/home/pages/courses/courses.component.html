@@ -1,0 +1,94 @@
+<slide-header class="animate__bounceInDown animate__animated">
+  <div class="w-full h-52 relative -mt-12">
+    <div style="box-shadow: 0px 3px 20px 9px var(--my-card-background);"
+      class="w-full h-52 left-0 top-0 absolute bg-[var(--solid-darker-background)] bg-opacity-80 rounded-bl-[25px] rounded-br-[25px] ">
+    </div>
+    <div class="w-[calc(100%-24px)] h-[46px] left-[24px] top-[145px] absolute">
+      <div class="w-[calc(100%-24px)] h-[46px] left-0 top-0 absolute bg-white rounded-lg"></div>
+      <div class="w-6 h-6 left-[12px] top-[11px] absolute">
+        <img ImageFallBack class="h-6 w-6" src="/assets/icons/px-search.svg" alt="">
+      </div>
+      <!-- <div style="box-shadow: 0px 3px 20px 9px #ab9fb63b;"> -->
+      <div>
+        <input type="text" placeholder="Search Here" (focus)="onFocusInput($event)"
+          class="!outline-none w-[calc(100%-80px)] left-[48px] top-[11px] absolute opacity-60 text-zinc-400 text-base font-medium leading-normal border-transparent focus:border-transparent focus:ring-0">
+      </div>
+    </div>
+    <div class="mt-2">
+      <!-- <div class="w-6 h-6 right-[30px] top-[62px] absolute">
+        <div class="w-[17px] h-5 left-[3.50px] top-[2px] absolute">
+          <img ImageFallBack src="/assets/icons/notification.svg" alt="">
+
+        </div>
+        <div class="w-2 h-2 left-[14px] top-[2px] absolute bg-orange-400 rounded-full shadow border border-white">
+        </div>
+      </div> -->
+      <div class="w-[223px] h-[59px] left-[40px] top-[60px] absolute">
+        <div class="left-0 top-0 absolute  text-[22px] font-bold">Explore</div>
+        <div class="left-0 top-[35px] absolute text-zinc-400 text-sm font-medium leading-normal">
+
+          Find a source you want
+          to learn
+        </div>
+      </div>
+    </div>
+  </div>
+</slide-header>
+
+<ion-content class="animate__bounceInUp animate__animated"> 
+
+  <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200"  (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  
+  <!-- Editor choice -->
+  <section class="flex justify-between px-6 items-center">
+    <div class="font-medium text-xl">
+      Editor choice
+    </div>
+    <ion-button [disabled]="!(editorChoice&& editorChoice.length>0)" fill="clear" mode="ios"
+      (click)="seAllEditorChoice()">
+      <ion-label>See All</ion-label>
+      <ion-icon slot="end" icon="chevron-forward-outline"></ion-icon>
+    </ion-button>
+  </section>
+  <section *ngIf="editorChoice&& editorChoice.length>0 ;else noEditorChoice"
+    class="overflow-x-scroll no-scrollbar flex flex-nowrap gap-4 px-6">
+
+
+    <course-card (onclick)="goCouresInfo(item)" [item]="item" *ngFor="let item of editorChoice"></course-card>
+
+  </section>
+  <ng-template #noEditorChoice>
+    <p class="text-sm text-[var(--my-content-text-color)] w-full mx-6">
+      Editor choice course could not be found.
+
+    </p>
+  </ng-template>
+
+  <!-- Recommended -->
+  <section class="flex justify-between px-6 items-center">
+    <div class="font-medium text-xl">
+      Recommended
+    </div>
+    <ion-button [disabled]="!(recommendedChoice&& recommendedChoice.length>0)" fill="clear" mode="ios"
+      (click)="seAllRecommended()">
+      <ion-label>See All</ion-label>
+      <ion-icon slot="end" icon="chevron-forward-outline"></ion-icon>
+    </ion-button>
+  </section>
+  <section *ngIf="recommendedChoice&& recommendedChoice.length>0 ;else noRecommended"
+    class="overflow-x-scroll no-scrollbar flex flex-nowrap gap-4 px-6">
+
+    <course-card (onclick)="goCouresInfo(item)" [item]="item" *ngFor="let item of recommendedChoice"></course-card>
+
+  </section>
+
+
+  <ng-template #noRecommended>
+    <p class="text-sm text-[var(--my-content-text-color)] w-full mx-6">
+      Recommended course could not be found.
+    </p>
+  </ng-template>
+</ion-content>

@@ -1,0 +1,26 @@
+<slide-header class="shadow-none animate__bounceInDown animate__animated">
+  <div class="pt-5 pb-5 animate__animated animate__fadeInDown flex justify-center">
+    <div class="w-full absolute  top-8 px-6 pr-2 flex justify-between">
+      <ion-icon style="margin-top: -14px;" (click)="back()" size="large" name="chevron-back-outline"></ion-icon>
+    </div>
+    <div class="flex justify-items-center">
+      <h1 class="title ml-10">{{title}}</h1>
+    </div>
+  </div>
+</slide-header>
+
+<ion-content class="animate__bounceInUp animate__animated">
+  <div  class="flex justify-center">
+
+  <ion-row class="mt-2">
+    <ion-col *ngFor="let item of data"
+              size-sm="6" size-xs="6" size-md="4" sizelg="2" size-xl="2">
+
+      <div class="flex justify-center">
+        <course-card (click)="goCouresInfo(item.id)" [item]="item"></course-card>
+      </div>
+    </ion-col>
+  </ion-row>
+</div>
+
+</ion-content>

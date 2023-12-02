@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "790538850069",
+    "project_id": "course-app-8a149",
+    "storage_bucket": "course-app-8a149.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790538850069:android:8d4edec17f78658b48231c",
+        "android_client_info": {
+          "package_name": "com.techdefendershub.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "790538850069-v142qeke9vss2snruuiiecmeq23ccga1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4s0A0I9P684f30Q5J2l-drqZceNPYKBs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "790538850069-v142qeke9vss2snruuiiecmeq23ccga1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

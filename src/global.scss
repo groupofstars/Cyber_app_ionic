@@ -1,0 +1,91 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import '@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+@import '~animate.css/animate.css';
+
+
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C900%2C700%2C600%2C300%2C200%7COpen+Sans&ver=1692642518');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+
+.active {
+    @apply text-blue-500;
+}
+
+ion-button {
+    text-transform: none;
+}
+
+ion-loading {
+    --background: var(--solid-background) !important;
+
+    & .loading-wrapper {
+        color: var(--ion-text-color) !important;
+    }
+}
+ion-alert {
+    --background: var(--solid-background) !important;
+
+    & .alert-wrapper {
+        color: var(--ion-text-color) !important;
+    }
+}
+ion-datetime {
+    --background:var(--solid-background) !important;
+    --background-rgb: 255, 241, 242 !important;
+  
+    border-radius: 16px !important;
+    box-shadow: rgba(var(--ion-color-rose-rgb), 0.3) 0px 10px 15px -3px !important;
+  }
+
+  ion-datetime-button {
+
+    & .date-button {
+        background: var(--solid-background) !important;
+    }
+
+
+}

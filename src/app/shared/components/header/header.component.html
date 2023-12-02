@@ -1,0 +1,8 @@
+<ion-header class="mb-2 shadow-none">
+  <ion-toolbar>
+    <ion-buttons *ngIf="hasBack" class="text-3xl" (click)="back()" slot="start">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>

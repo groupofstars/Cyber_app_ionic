@@ -1,0 +1,102 @@
+.dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+
+    border-radius: 50%;
+    /* Secondary */
+    background: #9BA1FF;
+    opacity: 0.2;
+    transition: all .2s ease-in-out;
+
+
+}
+
+.active {
+    border-radius: 20px;
+    width: 40px;
+
+    transition: all .2s ease-in-out;
+}
+
+// .show {
+//     transform: scale(1);
+//     transition-delay: .2s;
+//     transition: all .2s ease-in-out;
+//     z-index: 105;
+// }
+
+// .hide-translatio {
+//     transform: scale(0);
+//     transition: all .2s ease-in-out;
+// }
+.btn-parent {
+    display: flex;
+    width: 177px;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.btn {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0);
+}
+
+
+
+
+.show {
+    opacity: 1;
+    transform: scale(1);
+    transition: all .2s ease-in-out;
+}
+
+.hideme {
+    opacity: 0;
+    transform: scale(0);
+    transition: all .2s ease-in-out;
+}
+
+.title {
+
+    /* Title 01 */
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 27px;
+    /* identical to box height */
+
+    /* Main Text */
+}
+
+.desc {
+    /* Stay notified about new course update, scoreboard status and new friend follows. */
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    /* or 150% */
+
+    /* Body Text */
+    color: #9295A3;
+
+
+}
+
+.skp-btn {
+    /* Body 01 */
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    /* Body Text */
+    color: #9295A3;
+}

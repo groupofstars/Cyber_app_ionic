@@ -1,0 +1,137 @@
+.title {
+    /* Title 01 */
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 27px;
+    /* identical to box height */
+
+    /* Main Text */
+}
+
+.vip {
+    background: var(--ion-color-primary);
+    border-radius: 12px;
+}
+
+.hours {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+time {
+    /* Body 02 */
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+    text-align: center;
+}
+
+.profile-card {
+    border-radius: 6px;
+    padding: 5px;
+    padding-left: 9px;
+    padding-right: 9px;
+    margin-top: 5px;
+
+    .profile-card-title {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+
+    height: auto;
+    width: auto;
+
+    margin: 0 auto;
+}
+
+b {
+    width: auto;
+}
+
+.ripple-parent {
+    position: relative;
+    overflow: hidden;
+}
+
+.rectangle {
+    width: auto;
+    height: auto;
+}
+
+.rounded-rectangle {
+    width: auto;
+    height: auto;
+}
+
+.circle {
+    width: auto;
+    height: auto;
+    border-radius: 50%;
+}
+
+ion-ripple-effect {
+    height: 98px;
+    margin-top: 6px;
+    border-radius: 6px;
+}
+
+.name {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+}
+
+::ng-deep .action .sc-ion-action-sheet-ios {
+    font-size: 20px !important;
+}
+
+
+input {
+    color-scheme: dark;
+    font-size: 20px;
+}
+
+//   .confirm-btn{
+//     --background: (--ion-color-primar) !important;
+//   }
+
+
+ion-modal {
+    --ion-background-color: var(--solid-background) !important;
+
+    & ion-toolbar {
+        --ion-toolbar-background: var(--solid-background) !important;
+    }
+
+    & ion-datetime-button {
+        --ion-color-step-300: var(--ion-background) !important;
+
+    }
+
+
+
+}
+
+ion-picker-column-internal {
+    --ion-color-step-300: var(--ion-background) !important;
+    --background-rgb: var(--ion-background) !important;
+    background: var(--ion-background) !important;
+}

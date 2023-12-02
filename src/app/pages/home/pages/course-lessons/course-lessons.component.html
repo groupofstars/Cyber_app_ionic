@@ -1,0 +1,263 @@
+<slide-header class="shadow-none">
+  <div class="">
+    <div class="w-full absolute top-12    flex justify-start">
+      <ion-icon (click)="back()" size="large" name="chevron-back-outline"></ion-icon>
+    </div>
+  </div>
+
+  <div class="content-bg px-5">
+    <ion-row class="ml-8">
+      <ion-col size="10">
+        <div class="mt-5">
+          <p class=" text-[22px] font-medium ">
+            {{(data&&data.course&&data.course.title && data.course.title.length > 30) ? ((data.course.title | slice:0:30
+            )+"..."):(data&&data.course&&data.course.title)??'Name'}}
+          </p>
+        </div>
+      </ion-col>
+      <ion-col size="2" class="share-btn" (click)="share()">
+        <!-- <div class="mt-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M18 9C20.481 9 22.5 6.981 22.5 4.5C22.5 2.019 20.481 0 18 0C15.519 0 13.5 2.019 13.5 4.5C13.5 4.836 13.5435 5.16 13.6125 5.475L8.784 8.4915C7.99573 7.85407 7.01374 7.50435 6 7.5C3.519 7.5 1.5 9.519 1.5 12C1.5 14.481 3.519 16.5 6 16.5C7.056 16.5 8.016 16.119 8.784 15.5085L13.6125 18.5265C13.5398 18.846 13.5021 19.1724 13.5 19.5C13.5 21.981 15.519 24 18 24C20.481 24 22.5 21.981 22.5 19.5C22.5 17.019 20.481 15 18 15C16.944 15 15.9855 15.381 15.216 15.9915L10.3875 12.9735C10.4565 12.66 10.5 12.3345 10.5 12C10.5 11.664 10.4565 11.34 10.3875 11.0265L15.2175 8.0085C16.0053 8.64582 16.9867 8.99555 18 9ZM18 3C18.2971 2.9997 18.5876 3.08755 18.8348 3.25242C19.0819 3.4173 19.2746 3.65178 19.3884 3.92621C19.5022 4.20063 19.5321 4.50266 19.4742 4.79406C19.4163 5.08546 19.2733 5.35314 19.0632 5.56322C18.8531 5.7733 18.5855 5.91633 18.2941 5.97422C18.0027 6.03211 17.7006 6.00225 17.4262 5.88842C17.1518 5.77459 16.9173 5.5819 16.7524 5.33475C16.5876 5.0876 16.4997 4.7971 16.5 4.5C16.5 3.672 17.1735 3 18 3ZM6 13.5C5.61378 13.4827 5.24911 13.3171 4.98191 13.0377C4.71472 12.7583 4.5656 12.3866 4.5656 12C4.5656 11.6134 4.71472 11.2417 4.98191 10.9623C5.24911 10.6829 5.61378 10.5173 6 10.5C6.38622 10.5173 6.75089 10.6829 7.01809 10.9623C7.28528 11.2417 7.4344 11.6134 7.4344 12C7.4344 12.3866 7.28528 12.7583 7.01809 13.0377C6.75089 13.3171 6.38622 13.4827 6 13.5ZM18 18C18.2971 17.9997 18.5876 18.0876 18.8348 18.2524C19.0819 18.4173 19.2746 18.6518 19.3884 18.9262C19.5022 19.2006 19.5321 19.5027 19.4742 19.7941C19.4163 20.0855 19.2733 20.3531 19.0632 20.5632C18.8531 20.7733 18.5855 20.9163 18.2941 20.9742C18.0027 21.0321 17.7006 21.0022 17.4262 20.8884C17.1518 20.7746 16.9173 20.5819 16.7524 20.3348C16.5876 20.0876 16.4997 19.7971 16.5 19.5C16.5 18.672 17.1735 18 18 18Z"
+              fill="#9295A3" />
+          </svg>
+        </div> -->
+      </ion-col>
+    </ion-row>
+
+    <div class="flex justify-between items-center ml-8">
+      <p class=" mb-3 text-sm ">Offred By:
+
+        <span class="text-sm text-[var(--my-content-text-color)]  mr-2"> Tech Defenders Hub</span>
+      </p>
+
+    </div>
+
+    <div class="flex justify-center mx-4 mb-2 mt-2">
+      <ion-row>
+        <ion-col>
+          <ion-segment [value]="0" (ionChange)="changeSwipe()" [(ngModel)]="activeIndex" mode="md">
+            <ion-segment-button [value]="0">
+              Lessons
+            </ion-segment-button>
+            <ion-segment-button [value]="1">
+              Discuss
+            </ion-segment-button>
+            <ion-segment-button [value]="2">
+              Test
+            </ion-segment-button>
+          </ion-segment>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</slide-header>
+
+<ion-content>
+  <div class="">
+    <swiper-container (slidechange)="slideChange()" #swiper class="m-0 ">
+      <swiper-slide>
+        <div>
+          <ng-container>
+            <div *ngIf="data?.certificated"
+              class="text-2xl font-medium border-b  w-full items-center flex justify-center pt-4">
+              <ion-button [routerLink]="['/home/my-certificate/' + data?.id]"><ion-icon name="eye-outline" class="mr-2"></ion-icon>
+                Show Certificate
+              </ion-button>
+            </div>
+            <div (click)="startNow()" style="pointer-events:all;" size="large"
+              [ngClass]="{'hidden': !data?.course?.live?.is_started}"
+              class="absolute animate__animated z-50 right-4 top-1 bg-[var(--ion-color-primary)]  rounded-full w-12 h-12 min-h-0 min-w-0 flex items-center justify-center  animate__pulse animate__infinite	infinite ">
+              <ion-icon color="light" slot=" icon-only" name="play"></ion-icon>
+            </div>
+            <div class="text-2xl font-medium border-b  w-full items-center flex justify-center pt-8"> Records</div>
+
+            <ion-row *ngFor="let item of lessons;let i=index" class="mr-4">
+              <ion-col size="1">
+                <div (click)="selectLesson(item)" class="h-full">
+
+                  <div
+                    [ngClass]="{'stepper-line-first':i==0 ,'stepper-line-last':i==lessons.length -1 || i==progeress,'stepper-line-complted':i<=progeress}"
+                    class="absolute h-full  right-1.5 " style="border: 1px solid #bcbcbc;"></div>
+                  <div *ngIf=" i==progeress && i!=lessons.length -1 " [ngClass]="{'stepper-line-first':true }"
+                    class="absolute h-full  right-1.5 " style="border: 1px solid #bcbcbc;"></div>
+                  <div class="absolute -right-1 top-[40%]">
+                    <svg *ngIf="!item.isShowed" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="12" fill="#EBEBEB" />
+                      <circle cx="12" cy="12" r="3" fill="white" />
+                    </svg>
+                    <svg *ngIf="item.isShowed" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="12" fill="#4DC591" />
+                      <rect width="16" height="16" transform="translate(4 4)" fill="#4DC591" />
+                      <path
+                        d="M15.4937 8.75844C15.8383 8.41385 16.397 8.41385 16.7416 8.75844C17.0861 9.10302 17.0861 9.66169 16.7416 10.0063L11.4474 15.3004C11.1029 15.645 10.5442 15.645 10.1996 15.3004L7.25844 12.3592C6.91385 12.0146 6.91385 11.456 7.25844 11.1114C7.60302 10.7668 8.16169 10.7668 8.50627 11.1114L10.8235 13.4286L15.4937 8.75844Z"
+                        fill="white" />
+                    </svg>
+                  </div>
+                </div>
+              </ion-col>
+              <ion-col size="11" class="rounded-full">
+                <div (click)="goPlay(i)" class="card card-border" [ngClass]="{'card-border': isCardSelected==i}">
+                  <ion-row (click)="onCardClick(i)">
+                    <ion-col size="2" class="place-self-center">
+                      <h1 class="card-one text-center" [ngClass]="{'selected-card': isCardSelected==i}">
+                        {{i+1 | number:'2.0'}}
+                      </h1>
+                    </ion-col>
+                    <ion-col>
+                      <ion-row>
+                        <ion-col size="8" size="12">
+                          <h1 class="card-two-title" [ngClass]="{'selected-card': isCardSelected==i}"> {{item.title}}
+                          </h1>
+                        </ion-col>
+                        <ion-col size="12">
+                          <h5 class="card-clock"> {{item.time}} </h5>
+                        </ion-col>
+                      </ion-row>
+                    </ion-col>
+                    <ion-col size="2">
+                      <div class="mt-2">
+
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ng-container>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div>
+          <div class="mx-4">
+            <!-- <ion-row *ngFor="let item of [{message:'test',isOur:true,sender:{picture:'https://kasimyuksel.com/uploads/image-1694681820260-e758e23713.jpg',fullName:'ben'}},{message:'test',isOur:false,sender:{picture:'https://kasimyuksel.com/uploads/image-1694681820260-e758e23713.jpg',fullName:'diğer'}}]"> -->
+
+            <ion-row>
+              <ion-col size="12" *ngFor="let item of messages" x>
+                <div class="bg-[var(--ion-background)] mt-2 rounded-lg flex p-2 " *ngIf="!item.isOur">
+                  <div  >
+                    <ion-avatar class="flex items-center">
+                      <img class="w-14 h-14" [src]="item.sender.picture">
+                    </ion-avatar>
+                  </div>
+                  <div class="ml-2" >
+                    <div>
+                      <div class="font-semibold">
+                        {{item.sender.fullName}}
+                      </div>
+                      <div class="text-[var(--my-content-text-color)]">
+                        {{item.message}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-[var(--ion-background)] mt-2 rounded-lg flex justify-end p-2" *ngIf="item.isOur">
+
+                  <div class="mr-3">
+                    <div>
+                      <div class="flex justify-end font-semibold">
+                        {{item.sender.fullName}}
+                      </div>
+                      <div class="text-[var(--my-content-text-color)]">
+                        {{item.message}}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <ion-avatar class="flex items-center">
+                      <img class="w-14 h-14" [src]="item.sender.picture">
+                    </ion-avatar>
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+
+            <div *ngIf="!messages ||messages.length == 0" class="flex justify-center text-center">
+              <p class="text-md md:text-2xl text-[var(--my-content-text-color)]   w-full mt-6 mx-6">
+                Course messages could not be found.
+
+              </p>
+            </div>
+
+            <div></div>
+          </div>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div>
+          <div>
+            <ng-container *ngFor="let item of quizes;let i=index">
+              <ion-row>
+                <ion-col size="1">
+                  <div (click)="selectLesson(item)" class="h-full">
+
+                    <div
+                      [ngClass]="{'stepper-line-first':i==0 ,'stepper-line-last':i==lessons.length -1 || i==progeress,'stepper-line-complted':item.is_completed}"
+                      class="absolute h-full  right-1.5 " style="border: 1px solid #bcbcbc;"></div>
+                    <div *ngIf=" i==progeress && i!=lessons.length -1 " [ngClass]="{'stepper-line-first':true }"
+                      class="absolute h-full  right-1.5 " style="border: 1px solid #bcbcbc;"></div>
+                    <div class="absolute -right-1 top-[40%]">
+                      <svg *ngIf="!item.is_completed" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="12" fill="#EBEBEB" />
+                        <circle cx="12" cy="12" r="3" fill="white" />
+                      </svg>
+                      <svg *ngIf="item.is_completed" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="12" fill="#4DC591" />
+                        <rect width="16" height="16" transform="translate(4 4)" fill="#4DC591" />
+                        <path
+                          d="M15.4937 8.75844C15.8383 8.41385 16.397 8.41385 16.7416 8.75844C17.0861 9.10302 17.0861 9.66169 16.7416 10.0063L11.4474 15.3004C11.1029 15.645 10.5442 15.645 10.1996 15.3004L7.25844 12.3592C6.91385 12.0146 6.91385 11.456 7.25844 11.1114C7.60302 10.7668 8.16169 10.7668 8.50627 11.1114L10.8235 13.4286L15.4937 8.75844Z"
+                          fill="white" />
+                      </svg>
+                    </div>
+                  </div>
+                </ion-col>
+                <ion-col size="11">
+                  <div (click)="startQuiz(item)" class="card card-border"
+                    [ngClass]="{'card-border': isCardSelected==i}">
+                    <ion-row (click)="onCardClick(i)">
+                      <ion-col size="2" class="place-self-center">
+                        <h1 class="card-one text-center" [ngClass]="{'selected-card': isCardSelected==i}">
+                          {{i+1 | number:'2.0'}}
+                        </h1>
+                      </ion-col>
+                      <ion-col>
+                        <ion-row>
+                          <ion-col size="8" size="12">
+                            <h1 class="card-two-title" [ngClass]="{'selected-card': isCardSelected==i}"> {{item.title
+                              &&item.title.length>0 ?item.title:'Un Named Quiz'}}
+                            </h1>
+                          </ion-col>
+                          <ion-col size="12">
+                            <h5 class="card-clock"> {{item.time | date :'hh:MM'}} </h5>
+                          </ion-col>
+                        </ion-row>
+                      </ion-col>
+
+                    </ion-row>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ng-container>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+
+  </div>
+</ion-content>
+
+<ion-footer *ngIf="data?.chatId" [ngClass]="{'hidden': this.activeIndex !=1}">
+  <div class="absolute bottom-6 right-0 pr-10 flex justify-end items-center">
+    <ion-button [routerLink]="['/chating',data?.chatId]" color="tertiary"
+      class="go-chat-btn flex justify-center items-center">
+      <ion-icon class="" size="large" color="light" name="chatbubbles-outline"></ion-icon>
+    </ion-button>
+  </div>
+</ion-footer>

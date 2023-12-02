@@ -1,0 +1,229 @@
+<slide-header class="shadow-none animate__bounceInDown animate__animated" *ngIf="form">
+    <div class="w-full h-36 relative mb-5" [formGroup]="form">
+        <div class="w-full h-36 left-0 top-0 absolute  bg-opacity-80 rounded-bl-[25px] rounded-br-[25px] shadow ">
+        </div>
+        <div routerLink="/home" class="absolute h-[46px] left-[12px] top-[50px] flex items-center">
+            <ion-icon class="!text-3xl" name="chevron-back-outline"></ion-icon>
+        </div>
+        <div class="w-[calc(100%-96px)] h-[46px] left-[48px] top-[50px] relative">
+            <div class="w-full h-[46px] left-0 top-0 absolute bg-white rounded-lg"></div>
+            <div class="w-6 h-6 left-[12px] top-[11px] absolute">
+                <img ImageFallBack class="h-6 w-6" src="/assets/icons/px-search.svg" alt="">
+            </div>
+            <div class="">
+
+                <input type="text" placeholder="Search Here" formControlName="searchKey" #searchInput
+                    class="!outline-none w-[calc(100%-80px)] left-[48px] top-[11px] absolute opacity-60 text-zinc-800 text-base font-medium leading-normal border-transparent focus:border-transparent focus:ring-0">
+            </div>
+            <!-- <div *ngIf="searchFormControl.value.length > 0" class="w-6 h-6 right-[12px] top-[11px] absolute"
+                (click)="searchFormControl.reset()">
+                <ion-icon class="text-2xl" name="close-outline"></ion-icon>
+            </div> -->
+        </div>
+        <div class="absolute h-[46px] right-[12px] top-[50px] flex items-center" id="filter-modal-trigger">
+            <ion-icon class="!text-3xl" name="options-outline"></ion-icon>
+        </div>
+
+    </div>
+
+    <ion-modal class="[--width:100%]" trigger="filter-modal-trigger" initialBreakpoint="1" [breakpoints]="[1]"
+        #filterModal>
+        <ng-template [formGroup]="form">
+            <slide-header class="shadow-none">
+
+                <div class="w-full h-36 relative ">
+                    <div
+                        class="w-full h-36 left-0 top-0 absolute  bg-opacity-80 rounded-bl-[25px] rounded-br-[25px] shadow ">
+                    </div>
+                    <div class="absolute h-[46px] left-[12px] top-[50px] flex items-center"
+                        (click)="filterModal.dismiss()">
+                        <ion-icon class="!text-3xl" name="chevron-back-outline"></ion-icon>
+                    </div>
+
+                    <div class="absolute h-[46px] left-[48px] top-[50px] flex items-center font-bold text-2xl">
+                    </div>
+
+                    <div (click)="form.reset()" class="absolute h-[46px] right-[48px] top-[50px] flex items-center ">
+                        Clear
+                    </div>
+
+
+                </div>
+            </slide-header>
+            <ion-content class="bg-[var(--solid-background)]">
+                <ion-list lines="none" class="my-3">
+                    <!-- <ion-list-header class="text-xl font-semibold">
+                        SubCategories
+                    </ion-list-header>
+
+
+                    <ion-radio-group formControlName="categories">
+                        <ion-item>
+                            <ion-radio [value]="0" class="[--size:20px]" color="success" mode="md" justify="start"
+                                labelPlacement="end">
+                                <ion-label class="font-medium ">Cyber Security</ion-label>
+                            </ion-radio>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-radio [value]="1" class="[--size:20px]" color="success" mode="md" justify="start"
+                                labelPlacement="end">
+                                <ion-label class="font-medium ">Wifi Analyzer</ion-label>
+                            </ion-radio>
+
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-radio [value]="2" class="[--size:20px]" color="success" mode="md" justify="start"
+                                labelPlacement="end">
+                                <ion-label class="font-medium ">Wifi Analyzer</ion-label>
+                            </ion-radio>
+
+                        </ion-item>
+                    </ion-radio-group> -->
+
+
+
+
+                    <ion-list-header class="text-xl font-semibold">
+                        Level
+                    </ion-list-header>
+
+                    <span formGroupName="level">
+                        <ion-item>
+                            <ion-checkbox formControlName="all" class="[--size:20px]" color="success" mode="md"
+                                justify="start" labelPlacement="end">
+                                <ion-label class="font-medium ">All Levels</ion-label>
+                            </ion-checkbox>
+
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-checkbox formControlName="beginner" class="[--size:20px]" color="success" mode="md"
+                                justify="start" labelPlacement="end">
+                                <ion-label class="font-medium ">Beginner</ion-label>
+                            </ion-checkbox>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-checkbox formControlName="expert" class="[--size:20px]" color="success" mode="md"
+                                justify="start" labelPlacement="end">
+                                <ion-label class="font-medium ">Intermediate</ion-label>
+                            </ion-checkbox>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-checkbox formControlName="intermediate" class="[--size:20px]" color="success" mode="md"
+                                justify="start" labelPlacement="end">
+                                <ion-label class="font-medium ">Expert</ion-label>
+                            </ion-checkbox>
+                        </ion-item>
+                    </span>
+
+                    <!-- <ion-list-header class="text-xl font-semibold">
+                        Price
+                    </ion-list-header>
+
+
+                    <ion-item>
+                        <ion-checkbox class="[--size:20px]" color="success" mode="md" justify="start"
+                            labelPlacement="end">
+                            <ion-label class="font-medium ">Paid</ion-label>
+                        </ion-checkbox>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-checkbox class="[--size:20px]" color="success" mode="md" justify="start"
+                            labelPlacement="end">
+                            <ion-label class="font-medium ">Free</ion-label>
+                        </ion-checkbox>
+                    </ion-item> -->
+                    <ion-list-header class="text-xl font-semibold">
+                        Rating
+                    </ion-list-header>
+
+                    <ion-radio-group formControlName="rate">
+                        <ion-item>
+                            <ion-radio [value]="0" class="[--size:20px]" color="success" mode="md" justify="start"
+                                labelPlacement="end">
+                                <ion-label class="font-medium ">4.5 & Up</ion-label>
+                            </ion-radio>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-radio [value]="1" class="[--size:20px]" color="success" mode="md" justify="start"
+                                labelPlacement="end">
+                                <ion-label class="font-medium ">4.0 & Up</ion-label>
+                            </ion-radio>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-radio [value]="2" class="[--size:20px]" color="success" mode="md" justify="start"
+                                labelPlacement="end">
+                                <ion-label class="font-medium ">3.5 & Up</ion-label>
+                            </ion-radio>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-radio [value]="3" class="[--size:20px]" color="success" mode="md" justify="start"
+                                labelPlacement="end">
+                                <ion-label class="font-medium ">3.0 & Up</ion-label>
+                            </ion-radio>
+                        </ion-item>
+                    </ion-radio-group>
+
+
+
+                </ion-list>
+
+            </ion-content>
+            <ion-footer class="shadow-none">
+                <section class="mt-2 mb-4 flex justify-center ">
+                    <button (click)="filterModal.dismiss()"
+                        class="bg-emerald-400 rounded-xl shadow px-5 py-2  w-1/3 ion-activatable ripple-parent select-none overflow-hidden relative">
+                        Apply
+                        <ion-ripple-effect></ion-ripple-effect>
+                    </button>
+                </section>
+            </ion-footer>
+        </ng-template>
+    </ion-modal>
+
+
+</slide-header>
+
+
+<ion-content *ngIf="form && searchFormControl" class="animate__bounceInUp animate__animated">
+
+    <main class="px-6">
+
+
+
+
+        <section *ngIf="searchFormControl.value?.length > 0" class="">
+            <h3 class="text-zinc-400 text-base font-medium" *ngIf="results">
+                Show {{results.length}} Results
+            </h3>
+
+            <div (click)="courseDetail(result)"
+                class="h-20 bg-[var(--solid-darker-background)] rounded-lg flex gap-4 items-center px-2 my-3"
+                *ngFor="let result of results">
+                <img ImageFallBack [src]="result.feature_banner" class="h-14 w-14" alt="">
+                <div class="flex flex-col flex-1">
+                    <h4 class="mb-1 flex justify-between">
+                        <span class=" font-medium">
+                            {{result.title}}
+                        </span>
+                        <div class="ml-auto flex items-center  gap-1.5">
+                            <ion-icon slot="start" name="star" class="text-[#F5A623]"></ion-icon>
+                            <span class="text-sm font-medium"> {{result.rate}} </span>
+                        </div>
+                    </h4>
+                    <!-- <h5 class="text-sm ">{{result.userCount}} Learner</h5> -->
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+</ion-content>

@@ -1,0 +1,60 @@
+<ion-content *ngIf="FormGroup"  class="animate__bounceInLeft animate__animated">
+  <section class="flex flex-col h-screen" [formGroup]="FormGroup">
+    <div class="mt-1">
+      <logo></logo>
+
+      <div class="flex flex-col justify-center items-center mx-10 mb-3">
+        <div class="w-full  items-start ">
+          <div class="content flex flex-col  ">
+            <h3 class="text-4xl font-bold  ">Sign In</h3>
+            <p class="tracking-tighter  text-xl md:text-2xl text-[var(--my-content-text-color)]">
+              Let's you in
+            </p>
+          </div>
+        </div>
+
+        <div class="w-full my-2">
+          <icon-input [placeholder]="'Email'" [ngClass]="{'invalid':email.invalid && ( email.touched ||email.dirty)}">
+            <ion-icon class="input-icon text-2xl" icon name="mail-outline"></ion-icon>
+            <input style="background: transparent;" type="email" formControlName="email" input />
+          </icon-input>
+        </div>
+        <div class="w-full mt-1 md:mt-5  "
+          [ngClass]="{'invalid':password.invalid && ( password.touched ||password.dirty)}">
+          <icon-input [placeholder]="'Password'" class="login">
+            <ion-icon class="input-icon text-2xl" icon name="lock-open-outline"></ion-icon>
+            <input style="background: transparent;" [type]="showePassword?'text':'password'" formControlName="password" class="rounded-full" input />
+            <ion-icon class="text-2xl mb-3" (click)="toggleShowPassword()" name="eye-outline" iconRight
+              *ngIf="showePassword"></ion-icon>
+            <ion-icon class="text-2xl mb-3" (click)="toggleShowPassword()" name="eye-off-outline" iconRight
+              *ngIf="!showePassword"></ion-icon>
+          </icon-input>
+        </div>
+
+        <div (click)="toggleRememberMe()" class="w-full  flex justify-center items-baseline m-2 ">
+          <div class=" p-[2px] rounded-md bg-gradient-to-r from-[#9f9ec08a]  to-[#9a9a9a34]  ">
+            <div
+              class="p-1 flex justify-center h-full w-full items-center  bg-gradient-to-r from-[#9f9ec08a]  to-[#9a9a9a34]  rounded-md   ">
+              <ion-icon [ngClass]="{'opacity-0': !rememberMe}" name="checkmark-outline"></ion-icon>
+            </div>
+          </div>
+          <label for="rememberMe"> Remember me</label><br>
+
+
+        </div>
+        <div class="w-full flex justify-center  ">
+          <ion-button class="w-full signup-btn" size="large" (keyup.enter)="login()" (click)="login()" shape="round"> Sign in</ion-button>
+
+        </div>
+      </div>
+
+    </div>
+    <!-- <div class="w-full flex justify-center items-center mt-auto ">
+      <p class=" text-gray-500 text-sm md:text-base dark:text-gray-400">Don't have an account?</p>
+
+      <ion-button fill="clear" color="warning" (click)="register()"> Sign Up <ion-icon class="text-2xl"
+          name="caret-forward-outline"></ion-icon></ion-button>
+
+    </div> -->
+  </section>
+</ion-content>

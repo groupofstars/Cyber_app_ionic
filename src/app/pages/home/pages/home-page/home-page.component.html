@@ -1,0 +1,363 @@
+<slide-header class="w-full animate__bounceInDown animate__animated">
+    <div class=" flex flex-col justify-between  w-full mb-2 ml-2">
+
+        <div class="flex justify-start w-full items-center py-4">
+            <logo class="max-h-[8rem]" [noName]="true" [noSlogan]="true"></logo>
+            <div class="flex-auto mb-2 ml-2">
+                <div class="  text-[22px] font-bold text-center">Hello {{user()?.fullName ?? 'There'}}</div>
+                <div class=" text-[var(--my-content-text-color)] text-sm font-medium leading-normal text-center">From
+                    Passionate Hacker To Professional Defender's</div>
+            </div>
+            <div class="mr-2 h-6 ">
+
+            </div>
+        </div>
+
+
+        <div class="flex justify-center p-2">
+            <div class="flex justify-start w-[calc(100%-24px)] min-h-[2.7rem] bg-white rounded-lg ">
+                <img ImageFallBack class="h-6 w-6 mt-2" src="/assets/icons/px-search.svg" alt="">
+                <input type="text" placeholder="Search Here" (focus)="onFocusInput($event)"
+                    class="!outline-none ml-2 rounded-2xl opacity-60 text-[var(--my-content-text-color)] text-base font-medium leading-normal border-transparent focus:border-transparent focus:ring-0 w-full">
+            </div>
+        </div>
+    </div>
+</slide-header>
+
+<ion-content #content [fullscreen]="false" class="animate__bounceInUp animate__animated">
+    <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200" (ionRefresh)="handleRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div class=""></div>
+    <div class="mb-6">
+        <!-- <section class="flex justify-between px-6 items-center" *ngIf="categories&&categories.length>0">
+            <div class="font-medium text-xl">
+                Categories
+            </div>
+
+        </section> -->
+        <!-- Categori-->
+        <!-- <section>
+
+            <div class="px-6 mb-4 overflow-x-scroll no-scrollbar flex flex-nowrap gap-4 ">
+                <div (click)="filterCategory(item)" *ngFor="let item of categories"
+                    class="px-5 py-3 rounded-lg  min-w-fit bg-[var(--ion-background)] ">
+                    <span class="text-[13px] category-name font-medium leading-normal"> {{item.title}} </span>
+                </div>
+
+            </div>
+        </section> -->
+        <!-- Our curses-->
+        <section class="flex justify-between px-6 items-center ">
+            <div class="font-medium text-xl">
+                Our Courses
+            </div>
+            <ion-button fill="clear" mode="ios" (click)="seeOurCurses()">
+                <ion-label>See All</ion-label>
+                <ion-icon slot="end" icon="chevron-forward-outline"></ion-icon>
+            </ion-button>
+        </section>
+        <section>
+            <section class="overflow-x-scroll no-scrollbar overflow-y-clip  flex flex-nowrap gap-4 px-6">
+                <course-card (onclick)="goCouresInfo($event)" [item]="item"
+                    *ngFor="let item of coursesData "></course-card>
+            </section>
+        </section>
+
+        <!-- Our Services -->
+        <section class="flex justify-between px-6 py-2 items-center">
+            <div class="font-medium text-xl">
+                Our Services
+            </div>
+            <!-- <ion-button fill="clear" mode="ios" (click)="seeOurServices()"> -->
+            <ion-button fill="clear" mode="ios" class="hidden">
+
+                <ion-label>See All</ion-label>
+                <ion-icon slot=" end" icon="chevron-forward-outline"></ion-icon>
+            </ion-button>
+        </section>
+
+        <section>
+            <section class="overflow-x-scroll no-scrollbar overflow-y-clip  flex flex-nowrap gap-4 px-6">
+                <service-card (onclick)="goServiceInfo(item)" [item]="item"
+                    *ngFor="let item of servicesData "></service-card>
+            </section>
+        </section>
+
+        <!--Popular Courses -->
+        <section *ngIf="popularCoursesData&&popularCoursesData.length>0" class="flex justify-between px-6 items-center">
+            <div class="font-medium text-xl">
+                Popular Courses
+            </div>
+            <ion-button fill="clear" mode="ios" (click)="seeAllPopular()">
+                <ion-label>See All</ion-label>
+                <ion-icon slot="end" icon="chevron-forward-outline"></ion-icon>
+            </ion-button>
+        </section>
+
+        <div>
+            <section class="overflow-x-scroll no-scrollbar flex flex-nowrap gap-4 px-6">
+                <course-card (onclick)="goCouresInfo(item)" [item]="item"
+                    *ngFor="let item of popularCoursesData "></course-card>
+            </section>
+        </div>
+
+
+
+        <!-- Features Courses -->
+        <section *ngIf="featuredCoursesData&&featuredCoursesData.length>0"
+            class="flex justify-between px-6 items-center">
+            <div class="font-medium text-xl">
+                Features Courses
+            </div>
+            <ion-button (click)="seeFeaturedPopular()" fill="clear" mode="ios">
+                <ion-label>See All</ion-label>
+                <ion-icon slot="end" icon="chevron-forward-outline"></ion-icon>
+            </ion-button>
+        </section>
+
+        <section class="overflow-x-scroll no-scrollbar flex flex-nowrap gap-4 px-6">
+            <course-card (onclick)="goCouresInfo(item)" [item]="item"
+                *ngFor="let item of featuredCoursesData "></course-card>
+        </section>
+
+        <!-- upcoming event -->
+        <section class="mt-6">
+            <div class="font-medium text-xl text-center">
+                Upcoming Events
+            </div>
+        </section>
+        <swiper-container [speed]="1000" [slidesPerView]="1" [autoplay]="{disableOnInteraction: false}" [breakpoints]="{
+            '@0.75': {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            '@1.00': {
+              slidesPerView: 3,
+              spaceBetween: 40,
+            },
+            '@1.50': {
+              slidesPerView: 4,
+              spaceBetween: 50,
+            },
+          }">
+            <swiper-slide [loop]="true" *ngFor="let item of upcomingEvents">
+                <div class="flex justify-center">
+                    <div class=" px-12 my-4 rounded-t-xl">
+                        <div class="bg-[var(--solid-background)] p-1  rounded-t-xl">
+                            <div class="w-52 h-[400px]">
+                                <div *ngIf="item.image_url">
+                                    <img ImageFallBack class="max-h-80
+                                 rounded-t-xl md:my-2" #image alt="Silhouette of mountains" [src]="item.image_url" />
+                                </div>
+                                <div class="py-2" *ngIf="item.title">
+                                    <div class="flex justify-center text-center mx-5">
+                                        <div>{{item.title}}</div>
+                                    </div>
+
+                                    <div *ngIf="item.title" class="text-center text-[var(--my-content-text-color)]">
+                                        {{item.description}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </swiper-slide>
+        </swiper-container>
+
+        <section class="w-full bg-[var(--solid-background)] p-1">
+            <div class="flex justify-around py-2">
+                <div *ngFor="let item of [
+                {title: '25000',description: 'Total Students',image: '/assets/icons/student-1.png'},
+                {title: '110+',description: 'Course Outlines',image: '/assets/icons/student-1-1.png'},
+                {title: '4 months',description: 'Course Duration',image: '/assets/icons/student-1-2.png'},
+                {title: '18000+',description: 'Successful Freelancer',image: '/assets/icons/student-1-3.png'},
+                ]">
+                    <div class="flex justify-center mx-5">
+                        <img ImageFallBack alt="Silhouette of mountains " [src]="item.image" />
+                    </div>
+                    <div>
+                        <div>
+                            <div class="text-center font-extrabold">{{item.title}}</div>
+                            <div class="text-center text-xs">{{item.description}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Preview of Your Future -->
+        <section class="flex justify-center my-3 px-3">
+            <div>
+                <div class="text-center font-medium text-xl">
+                    Preview of Your Future
+                </div>
+                <div class="text-center text-[var(--my-content-text-color)]">
+                    Our dream is to make Cyber heros.Beside this we decided to reduce
+                    the security of unemployment rate in our country. Different marketplaces
+                    has so many demands on IT security related work. We focus on our learners, we make a path for them
+                    to earn money and built their own career.
+                </div>
+            </div>
+        </section>
+        <div>
+            <swiper-container #swiper [speed]="1000" [autoplay]="{disableOnInteraction: false}" [breakpoints]="{
+    '@0.75': {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    '@1.00': {
+      slidesPerView: 3,
+      spaceBetween: 40,
+    },
+    '@1.50': {
+      slidesPerView: 4,
+      spaceBetween: 50,
+    },
+  }" [slidesPerView]="1">
+                <swiper-slide [loop]="true">
+                    <div class="h-64">
+                        <img class="w-full max-w-full h-full object-contain " src="/assets/images/6.jpg" alt="">
+                    </div>
+                </swiper-slide>
+                <swiper-slide [loop]="true">
+                    <div class="h-64">
+                        <img class="w-full max-w-full h-full object-contain " src="/assets/images/9.jpg" alt="">
+                    </div>
+                </swiper-slide>
+                <swiper-slide [loop]="true">
+                    <div class="h-64">
+                        <img class="w-full max-w-full h-full object-contain " src="/assets/images/10.jpg" alt="">
+                    </div>
+                </swiper-slide>
+                <swiper-slide [loop]="true">
+                    <div class="h-64">
+                        <img class="w-full max-w-full h-full object-contain " src="/assets/images/7.jpg" alt="">
+                    </div>
+                </swiper-slide>
+                <swiper-slide [loop]="true">
+                    <div class="h-64">
+                        <img class="w-full max-w-full h-full object-contain " src="/assets/images/8.jpg" alt="">
+                    </div>
+                </swiper-slide>
+                <swiper-slide [loop]="true">
+                    <div class="h-64">
+                        <img class="w-full max-w-full h-full object-contain " src="/assets/images/1-1.jpg" alt="">
+                    </div>
+                </swiper-slide>
+                <swiper-slide [loop]="true">
+                    <div class="h-64">
+                        <img class="w-full max-w-full h-full object-contain " src="/assets/images/2-2.jpg" alt="">
+                    </div>
+                </swiper-slide>
+                <swiper-slide [loop]="true">
+                    <div class="h-64">
+                        <img class="w-full max-w-full h-full object-contain " src="/assets/images/4-1.jpg" alt="">
+                    </div>
+                </swiper-slide>
+                <swiper-slide [loop]="true">
+                    <div class="h-64">
+                        <img class="w-full max-w-full h-full object-contain " src="/assets/images/5.jpg" alt="">
+                    </div>
+                </swiper-slide>
+                <swiper-slide [loop]="true">
+                    <div class="h-64">
+                        <img class="w-full max-w-full h-full object-contain " src="/assets/images/Gleb.jpg" alt="">
+                    </div>
+                </swiper-slide>
+                <swiper-slide [loop]="true">
+                    <div class="h-64">
+                        <img class="w-full max-w-full h-full object-contain " src="/assets/images/Harrison.jpg" alt="">
+                    </div>
+                </swiper-slide>
+                <swiper-slide [loop]="true">
+                    <div class="h-64">
+                        <img class="w-full max-w-full h-full object-contain " src="/assets/images/5-1.jpg" alt="">
+                    </div>
+                </swiper-slide>
+            </swiper-container>
+        </div>
+
+        <!-- Our Teacher -->
+
+        <section class="flex justify-between px-6 my-3 items-center">
+            <div class="font-medium text-xl">
+                Our Teacher
+            </div>
+        </section>
+
+        <swiper-container [slidesPerView]="2" [speed]="1000" [breakpoints]="{
+            '@0.75': {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            '@1.00': {
+              slidesPerView: 3,
+              spaceBetween: 40,
+            },
+            '@1.50': {
+              slidesPerView: 4,
+              spaceBetween: 50,
+            },
+          }" [autoplay]="{disableOnInteraction: false}">
+            <swiper-slide *ngFor="let item of teachers " [loop]="true">
+                <teacher-card class="" (onclick)="goTeacherItem(item)" [item]="item"></teacher-card>
+            </swiper-slide>
+        </swiper-container>
+
+        <!-- -- -->
+        <div class="my-7">
+            <swiper-container #swiper [slidesPerView]="4" [speed]="1000" [autoplay]="{disableOnInteraction: false}"
+                [slideToClickedSlide]="false" class=" bg-[var(--ion-text-color)] px-3">
+                <swiper-slide [loop]="true">
+                    <div class="h-20 flex items-center">
+                        <img ImageFallBack class="w-20 h-full" src="/assets/workings/SAP_logo.png" alt="">
+                    </div>
+                </swiper-slide>
+                <swiper-slide [loop]="true">
+                    <div class="flex items-center h-20">
+                        <img ImageFallBack class="w-20" src="/assets/workings/Oracle-Logo.png" alt="">
+                    </div>
+                </swiper-slide>
+                <swiper-slide [loop]="true">
+                    <div class="flex items-center h-20">
+                        <img ImageFallBack class="w-20" src="/assets/workings/png-apple-logo-9711.png" alt="">
+                    </div>
+                </swiper-slide>
+                <swiper-slide [loop]="true">
+                    <div class="flex items-center h-20">
+                        <img ImageFallBack class="w-20" src="/assets/workings/cisco-logo-transparent.png" alt="">
+                    </div>
+                </swiper-slide>
+                <swiper-slide [loop]="true">
+                    <div class="flex items-center h-20">
+                        <img ImageFallBack class="w-20" src="/assets/workings/Alphabet-logo.png" alt="">
+                    </div>
+                </swiper-slide>
+                <swiper-slide [loop]="true">
+
+                    <div class="flex items-center h-20">
+                        <img ImageFallBack class="w-20 " src="/assets/workings/Salesforce.com_logo.svg_.png" alt="">
+                    </div>
+                </swiper-slide>
+                <swiper-slide [loop]="true">
+                    <div class="flex items-center h-20">
+                        <img ImageFallBack class="w-20 " src="/assets/workings/5842a770a6515b1e0ad75afe-1.png" alt="">
+                    </div>
+                </swiper-slide>
+                <swiper-slide [loop]="true">
+                    <div class="flex items-center h-20">
+                        <img ImageFallBack class="w-20 " src="/assets/workings/Amazon_logo.svg_.png" alt="">
+                    </div>
+                </swiper-slide>
+                <swiper-slide [loop]="true">
+                    <div class="flex items-center h-20">
+                        <img ImageFallBack class="w-20 " src="/assets/workings/microsoft-logo-transparent-free-png.webp"
+                            alt="">
+                    </div>
+                </swiper-slide>
+            </swiper-container>
+        </div>
+    </div>
+</ion-content>

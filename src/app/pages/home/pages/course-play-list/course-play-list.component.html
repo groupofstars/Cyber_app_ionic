@@ -1,0 +1,71 @@
+<slide-header class="animate__bounceInDown animate__animated">
+  <video #video controls="controls" controlsList="nodownload" preload="auto" autoplay
+    webkit-playsinline="webkit-playsinline" class="absolute z-50 videoPlayer animate__animated animate__fadeInDown">
+    <source [src]="url" type="video/mp4" />
+  </video>
+
+</slide-header>
+
+
+
+<ion-content  style="pointer-events: none;" class="z-30 animate__bounceInUp animate__animated">
+  <div class="h-60 " style="pointer-events: none;"></div>
+
+  <div style="pointer-events: all;" class=" px-5 min-h-[70%]   content-bg  animate__animated animate__fadeInUp ">
+
+    <div class="mt-2 px-5" style="transform: translateZ(10px);">
+      <p class="  pt-5 text-[22px] font-medium "> {{info.title}} </p>
+      <div class="flex justify-start items-baseline ">
+        <p class=" mb-3 text-sm   ">Offred By:
+          <span class=""> TECH DEFENDERS HUB</span>
+        </p>
+
+
+
+      </div>
+
+    </div>
+    <div *ngIf="info.lessons && info.lessons.length >0">
+
+      <div (click)="openUrl(i)" *ngFor="let lesson of info.lessons;let i=index" class="card rounded-lg  border-none ">
+        <ion-row>
+          <ion-col size="2" class="place-self-center">
+            <h1 class="text-[22px] font-medium text-center">
+              {{i+1 | number :'2.0'}}
+            </h1>
+          </ion-col>
+          <ion-col>
+            <ion-row>
+              <ion-col size="8" size="12">
+                <h1 class="card-two-title"> {{lesson.title}} </h1>
+              </ion-col>
+              <ion-col size="12">
+                <h5 class="card-clock"> {{lesson.time}}</h5>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col size="2" class="self-center flex justify-center ">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24.0004" cy="24" r="23" stroke="#9BA1FF" stroke-width="2" />
+              <path
+                d="M21.0004 20.48L27.0004 24L21.0004 27.52V20.52V20.48ZM19.9204 17.72C19.815 17.7189 19.7112 17.7466 19.6204 17.8L19.3704 17.94C19.2579 18.0073 19.1647 18.1024 19.0999 18.2163C19.035 18.3302 19.0008 18.459 19.0004 18.59V29.41C19.0008 29.5411 19.035 29.6698 19.0999 29.7837C19.1647 29.8976 19.2579 29.9928 19.3704 30.06L19.6204 30.2C19.7162 30.2601 19.8273 30.2913 19.9404 30.29C20.2076 30.2575 20.4622 30.1578 20.6804 30L29.6804 24.77C29.7928 24.7028 29.886 24.6076 29.9509 24.4937C30.0157 24.3798 30.05 24.2511 30.0504 24.12V23.84C30.05 23.709 30.0157 23.5802 29.9509 23.4663C29.886 23.3524 29.7928 23.2573 29.6804 23.19L20.8404 18.07C20.5676 17.8785 20.2514 17.7582 19.9204 17.72Z"
+                fill="#9BA1FF" />
+            </svg>
+          </ion-col>
+        </ion-row>
+      </div>
+
+
+
+
+    </div>
+    <div *ngIf="!info.lessons || info.lessons.length ==0">
+      <p> There are no recorded videos in this course application.</p>
+    </div>
+
+
+  </div>
+ 
+
+
+</ion-content>

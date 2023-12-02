@@ -1,0 +1,7 @@
+{
+  "name": "Cyber Course App",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

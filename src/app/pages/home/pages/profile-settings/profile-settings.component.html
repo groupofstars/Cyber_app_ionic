@@ -1,0 +1,44 @@
+<slide-header class="shadow-none animate__bounceInDown animate__animated">
+  <div class="pt-4 pb-2">
+    <ion-row>
+      <ion-col size="4">
+        <div class="flex justify-start mt-5 ml-3">
+          <div>
+            <ion-icon style="margin-top: -14px;" (click)="back()" size="large" name="chevron-back-outline"></ion-icon>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="8">
+        <div class="ion-text-start mt-2.5">
+          <h1 class="title">Change Password</h1>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+</slide-header>
+
+<ion-content *ngIf="form" [formGroup]="form" class="animate__bounceInUp animate__animated">
+  <div class="absolute bottom-[30%] w-full overflow-clip  px-4">
+    <div class="w-full mb-2">
+      <icon-input [placeholder]="'Old Password'">
+        <ion-icon class="input-icon text-2xl" icon name="lock-open-outline"></ion-icon>
+        <input type="email" formControlName="old_password" input />
+      </icon-input>
+    </div>
+    <div class="w-full mt-1 md:mt-5">
+      <icon-input [placeholder]="'Password'" class="login">
+        <ion-icon class="input-icon text-2xl" icon name="lock-open-outline"></ion-icon>
+        <input [type]="showePassword?'text':'password'" formControlName="new_password" class="rounded-full" input />
+        <ion-icon class="text-2xl mb-3" (click)="toggleShowPassword()" name="eye-outline" iconRight
+          *ngIf="showePassword"></ion-icon>
+        <ion-icon class="text-2xl mb-3" (click)="toggleShowPassword()" name="eye-off-outline" iconRight
+          *ngIf="!showePassword"></ion-icon>
+      </icon-input>
+    </div>
+
+    <div class="w-full flex justify-center  ">
+      <ion-button [disabled]="form.invalid" class="w-full mt-2 mx-2" size="large" (click)="save()"
+        shape="round">Save</ion-button>
+    </div>
+  </div>
+</ion-content>

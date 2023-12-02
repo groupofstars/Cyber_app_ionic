@@ -1,0 +1,85 @@
+<slide-header class="animate__bounceInDown animate__animated">
+  <div class="pt-5 pb-3">
+    <ion-row>
+      <ion-col size="8">
+        <h1 class="title ml-10">My Course</h1>
+      </ion-col>
+      <ion-col size="4" class="flex justify-end pr-12">
+        <ion-icon icon="refresh-outline" size="large" (click)="handleRefresh($event)"></ion-icon>
+        <!-- <div class="flex justify-end mr-4 opacity-0">
+          <div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M11.7666 20.7551C16.7309 20.7551 20.7552 16.7308 20.7552 11.7666C20.7552 6.80233 16.7309 2.77802 11.7666 2.77802C6.80239 2.77802 2.77808 6.80233 2.77808 11.7666C2.77808 16.7308 6.80239 20.7551 11.7666 20.7551Z"
+                stroke="#9295A3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path opacity="0.4" d="M18.0183 18.4851L21.5423 22" stroke="#9295A3" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="ml-4">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 3H2L10 12.46V19L14 21V12.46L22 3Z" stroke="#9295A3" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div> -->
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="flex justify-center mx-4 mb-2 mt-2">
+    <ion-row>
+      <ion-col>
+        <ion-segment (ionChange)="changeSwipe()" [value]="0" [(ngModel)]="activeIndex" mode="md">
+          <ion-segment-button [value]="0">
+            All
+          </ion-segment-button>
+          <ion-segment-button [value]="1">
+            Ongoing
+          </ion-segment-button>
+          <ion-segment-button [value]="2">
+            Completed
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+  </div>
+</slide-header>
+
+<ion-content #content [fullscreen]="false" class="animate__bounceInUp animate__animated">
+  <div *ngIf="data">
+    <swiper-container (slidechange)="slideChange()" #swiper class="m-0 ">
+      <swiper-slide class="min-h-[60vh]">
+        <ion-row class="">
+          <ion-col *ngFor="let item of data[0]" sizeSm="6" sizeXs="6" sizeLg="3" sizeMd="3" sizeXl="3">
+            <div class=" flex flex-nowrap justify-center">
+
+              <my-course-card (onclick)="goCourse(item.id)" [item]="item"></my-course-card>
+
+            </div>
+          </ion-col>
+        </ion-row>
+      </swiper-slide>
+      <swiper-slide class="min-h-[60vh]">
+        <ion-row class="">
+          <ion-col *ngFor="let item of data[1]" sizeSm="6" sizeXs="6" sizeLg="3" sizeMd="3" sizeXl="3">
+            <div class=" flex flex-nowrap justify-center">
+              <my-course-card (onclick)="goCourse(item.id)" [item]="item"></my-course-card>
+
+
+            </div>
+          </ion-col>
+        </ion-row>
+      </swiper-slide>
+      <swiper-slide class="min-h-[60vh]">
+        <ion-row class="">
+          <ion-col *ngFor="let item of data[2]" sizeSm="6" sizeXs="6" sizeLg="3" sizeMd="3" sizeXl="3">
+            <div class=" flex flex-nowrap justify-center">
+              <my-course-card (onclick)="goCourse(item.id)" [item]="item"></my-course-card>
+
+            </div>
+          </ion-col>
+        </ion-row>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+</ion-content>

@@ -1,0 +1,19 @@
+<ion-content>
+
+  <ion-router-outlet></ion-router-outlet>
+</ion-content>
+
+<ion-footer class="[--background:var(--ion-background)] ">
+  <ion-toolbar class="[--background:var(--ion-background)]">
+    <section class="flex pt-2">
+      <div (click)="route(tab)" *ngFor="let tab of tabs" [ngClass]="{active: tab.title == activeTabe?.title}"
+        class=" flex-1 justify-center flex flex-col items-center gap-2">
+        <ion-icon [icon]="tab.icon" class="text-3xl"></ion-icon>
+
+        <span class="text-xs">
+          {{tab.title}}
+        </span>
+      </div>
+    </section>
+  </ion-toolbar>
+</ion-footer>

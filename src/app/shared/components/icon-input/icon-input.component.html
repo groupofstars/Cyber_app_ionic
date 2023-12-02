@@ -1,0 +1,22 @@
+<!-- <input class="w-full" type="text" placeholder="Email"> -->
+<div class="w-full h-16 rounded-full bg-gradient-to-r from-[#9f9ec08a]  to-[#9a9a9a34]  ">
+  <div class="px-4 flex justify-between h-full w-full items-center  input-bg rounded-full   per-inpt ">
+    <div class="flex items-center">
+
+      <ng-content select="[icon]"></ng-content>
+    </div>
+    <div class="flex-auto mb-1 ml-2">
+
+      <div class="text-sm text-gray-200 input-placeholder">{{placeholder}} </div>
+      <div class="flex justify-between">
+        <div class="inpt w-full">
+          <ng-content select="[input]"></ng-content>
+          <ng-content select="[select]"></ng-content>
+        </div>
+
+        <ng-content select="[iconRight]"></ng-content>
+      </div>
+
+    </div>
+  </div>
+</div>

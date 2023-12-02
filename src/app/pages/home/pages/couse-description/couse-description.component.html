@@ -1,0 +1,250 @@
+<slide-header class="animate__bounceInDown animate__animated">
+
+  <div style="pointer-events:all;" class="absolute   z10 top-20 w-full  pt-3 px-6 flex justify-left items-center mb-2">
+    <ion-icon (click)="back()" style="pointer-events:all;" class="  " size="large"
+      name="chevron-back-outline"></ion-icon>
+  </div>
+  <div style="pointer-events: none;" class="absolute w-full  pt-3 px-6 flex justify-center items-center mb-2">
+    <img ImageFallBack class=" h-[10rem]" [src]="info.feature_banner">
+  </div>
+</slide-header>
+
+<ion-content class="z-30 animate__bounceInUp animate__animated" style="pointer-events:none;">
+
+
+  <div class="h-40 " style="pointer-events: none;"></div>
+
+  <div style="pointer-events:all;" class="content-bg h-100 overflow-auto px-5 mt-5">
+    <div (click)="startNow()" style="pointer-events:all;" size="large" [ngClass]="{'hidden': !info.live?.is_started}"
+      class="absolute animate__animated z-50 right-4 top-[9rem] bg-[var(--ion-color-primary)]  rounded-full w-14 h-14 min-h-0 min-w-0 flex items-center justify-center  animate__pulse animate__infinite	infinite ">
+      <ion-icon color="light" slot=" icon-only" name="play"></ion-icon>
+    </div>
+    <div class="  " style="transform: translateZ(10px);">
+
+      <p class="  pt-5  text-[22px] font-medium "> {{info.title}} </p>
+
+
+
+      <div class="flex justify-between items-baseline ">
+        <p class=" mb-3 text-sm   ">Offred By:
+          <span class="text-[--ion-color-primary]"> {{!info.offered ? 'Tech Defenders Hub':info.offered}} </span>
+        </p>
+        <div class="">
+
+          <ion-icon name="star" color="warning"></ion-icon>
+          {{info.rate}}
+        </div>
+      </div>
+
+      <div class="flex justify-between items-baseline">
+
+        <div class="flex justify-between items-baseline">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_2_4504)">
+              <circle cx="7" cy="7" r="5.6875" stroke="#fff" stroke-width="1.5" />
+              <path d="M7 3.9375V7H8.75" stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </g>
+            <defs>
+              <clipPath id="clip0_2_4504">
+                <rect width="14" height="14" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+
+
+          <p class="ml-2 mb-3 text-md   "> {{info.hour_duration ?info.hour_duration+ " Hours Course":info.duration +'
+            Weeks'}} </p>
+        </div>
+        <div *ngIf="!info.hour_duration" class="flex justify-between items-baseline">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_2_4504)">
+              <circle cx="7" cy="7" r="5.6875" stroke="#fff" stroke-width="1.5" />
+              <path d="M7 3.9375V7H8.75" stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </g>
+            <defs>
+              <clipPath id="clip0_2_4504">
+                <rect width="14" height="14" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+
+
+          <p class="ml-2 mb-3 text-md   "> {{info.perweek}} Days per weak</p>
+
+        </div>
+        <div>
+          <h1 class="price  font-bold text-xl">
+            {{info.price | currency: 'BDT':'৳':'3.0'}}
+
+
+
+          </h1>
+
+        </div>
+      </div>
+
+    </div>
+
+    <p class="ml-2 mb-3 text-md   ">{{ (info.description && info.description.length < 120 || !learnMore)?
+        (info.description | slice:0:120):(info.description)}} <span *ngIf="!learnMore" (click)="setLearnMor()"
+        class=" text-[--ion-color-primary] ">
+        Learn More ...</span>
+    </p>
+    <div>
+
+    </div>
+    <div *ngFor="let section of info.sections">
+      <!-- Check-->
+      <div *ngIf="section.type =='check'">
+        <p class=" pt-5  text-[22px] font-medium "> {{section.title}} </p>
+        <div *ngFor="let item of section.contents ;let i=index" class=" flex items-baseline">
+          <svg class="text-[var(--ion-color)]" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M11.75 1.5C9.679 1.5 8 2.395 8 3.5C8 2.395 6.321 1.5 4.25 1.5C2.179 1.5 0.5 2.395 0.5 3.5V14.5C0.5 13.395 2.179 12.5 4.25 12.5C6.321 12.5 8 13.395 8 14.5C8 13.395 9.679 12.5 11.75 12.5C13.821 12.5 15.5 13.395 15.5 14.5V3.5C15.5 2.395 13.821 1.5 11.75 1.5Z"
+              stroke="#fff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <p class="ml-2 mb-3 text-md   ">{{ (item.length > 30 && !seeMore[i])? (item | slice:0:30):(item)}} <span
+              *ngIf="item.length > 30 &&!seeMore[i]" (click)="setSeeMore(i)" class=" text-[--ion-color-primary] ">
+              More ...</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div *ngIf="section.type =='text'">
+        <p class=" pt-5  text-[22px] font-medium "> {{section.title}} </p>
+        <div *ngFor="let item of section.contents;let i=index " class=" flex items-baseline">
+          <p class="ml-2 mb-3 text-md   ">{{ (item.length > 30 && !seeMore[i])? (item | slice:0:30):(item)}} <span
+            *ngIf="item.length > 30 &&!seeMore[i]" (click)="setSeeMore(i)" class=" text-[--ion-color-primary] ">
+            More ...</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div *ngIf="info.lessons && info.lessons.length>0 && isLoged">
+      <div class=" flex justify-between items-baseline">
+        <p class="  pt-5  text-[22px] font-medium ">Records</p>
+        <span class="text-[--ion-color-light-shade]  text-2xl"></span>
+      </div>
+
+      <div (click)="goRecords(j)"
+        *ngFor="let item of info.lessons | slice :0:seeMore['video']?info.lessons && info.lessons.length:5 ;let j=index"
+        class="card  card-border">
+        <ion-row>
+          <ion-col size="2" class="place-self-center">
+            <h1 class=" text-[22px] font-medium text-center">
+              {{j+1 | number :'2.0'}}
+            </h1>
+          </ion-col>
+          <ion-col>
+            <ion-row>
+              <ion-col size="8" size="12">
+                <h1 class="card-two-title"> {{item.title}} </h1>
+              </ion-col>
+              <ion-col size="12">
+                <h5 class="card-clock"> {{item.time}} </h5>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col size="2" class="self-center flex justify-center ">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24.0004" cy="24" r="23" stroke="#fff" stroke-width="2" />
+              <path
+                d="M21.0004 20.48L27.0004 24L21.0004 27.52V20.52V20.48ZM19.9204 17.72C19.815 17.7189 19.7112 17.7466 19.6204 17.8L19.3704 17.94C19.2579 18.0073 19.1647 18.1024 19.0999 18.2163C19.035 18.3302 19.0008 18.459 19.0004 18.59V29.41C19.0008 29.5411 19.035 29.6698 19.0999 29.7837C19.1647 29.8976 19.2579 29.9928 19.3704 30.06L19.6204 30.2C19.7162 30.2601 19.8273 30.2913 19.9404 30.29C20.2076 30.2575 20.4622 30.1578 20.6804 30L29.6804 24.77C29.7928 24.7028 29.886 24.6076 29.9509 24.4937C30.0157 24.3798 30.05 24.2511 30.0504 24.12V23.84C30.05 23.709 30.0157 23.5802 29.9509 23.4663C29.886 23.3524 29.7928 23.2573 29.6804 23.19L20.8404 18.07C20.5676 17.8785 20.2514 17.7582 19.9204 17.72Z"
+                fill="#fff" />
+            </svg>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div *ngIf="info.lessons && info.lessons.length > 5 && !seeMore['video']"
+        class=" flex justify-between items-baseline">
+        <p class="  pt-5  text-[22px] font-medium "></p>
+        <span (click)="setSeeMore('video')" class="text-[--ion-color-primary]  text-2xl">See all</span>
+      </div>
+    </div>
+    <div *ngIf="info.teachers &&info.teachers.length > 0">
+      <p class="  pt-5  text-[22px] font-medium ">Instructor</p>
+
+      <div (click)="goTeacher(item)" *ngFor="let item of info.teachers"
+        class="flex justify-between items-baseline border-b-1">
+        <div class="flex-none w-12 self-center">
+          <ion-avatar>
+            <img ImageFallBack class="h-16 object-cover" [src]="item && item.picture" alt="">
+          </ion-avatar>
+
+        </div>
+        <div class="flex  flex-auto justify-start ml-5">
+          <ion-row class="start-0">
+            <ion-col size="12">
+              <h1 class="text-gray-50"> {{item.fullName}} </h1>
+            </ion-col>
+            <ion-col size="12">
+              <h5 class="card-clock text-sm ">{{item.title??'Teacher'}}</h5>
+            </ion-col>
+          </ion-row>
+        </div>
+
+
+      </div>
+
+      <div *ngIf="info.faq && info.faq.length > 0">
+        <p class="  pt-5  text-[22px] font-medium ">FAQ</p>
+        <div class="mb-1" *ngFor="let ask of info.faq;let fId =index" (click)="toggleSeeMore('faq'+fId)">
+          <p style="    background-color: var(--solid-darker-background);
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;" class="pl-2  pt-5   font-medium "> {{ask.title}} </p>
+          <p class="  pt-5 text-sm  animate__animated animate__bounceIn" *ngIf="seeMore['faq'+fId]">
+            {{ask.answer}} </p>
+        </div>
+      </div>
+
+
+      <div *ngIf="info.outlines && info.outlines.length>0">
+        <p class="pt-5  text-[22px] font-medium ">
+          Course Outline
+        </p>
+      </div>
+      <!-- <div *ngIf=" info.outlines && info.outlines.length> 0"> -->
+      <div>
+        <div class="grid grid-cols-2 md:grid-cols-3  justify-items-center ">
+          <div id="open-modal-{{i}}" *ngFor="let item of info.outlines;let i = index">
+            <img ImageFallBack class="w-[30vw] md:max-w-[16rem] max-w-[14rem] mb-8" src="{{item}}">
+
+
+            <ion-modal #modal trigger="open-modal-{{i}}">
+              <ng-template>
+
+                <div class="flex flex-col justify-center items-center h-screen ">
+                  <div class="min-h-full w-full  opacity-0" (click)="modal.dismiss()">x</div>
+                  <img ImageFallBack class=" w-full max-w-screen max-h-screen" src="{{item}}">
+                  <div class="min-h-full w-full  opacity-0" (click)="modal.dismiss()">x</div>
+
+                </div>
+              </ng-template>
+
+            </ion-modal>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="pt-5  text-[22px] font-medium ">
+          Become a complete {{info.title}} expert
+        </p>
+      </div>
+
+    </div>
+
+    <div *ngIf="!info.is_enrolled && !isTeacher" class="py-10 flex justify-center items-center ">
+      <ion-button (click)="enroolNow()" size="large" class="w-full start-btn" color="secondary" shape="round">
+        <ion-icon name="person-add-outline" class="mr-1"></ion-icon>
+        <p> Start </p>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

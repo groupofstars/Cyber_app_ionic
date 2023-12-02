@@ -1,0 +1,74 @@
+.dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+
+    border-radius: 50%;
+    /* Secondary */
+    background: #9BA1FF;
+    opacity: 0.2;
+    transition: all .2s ease-in-out;
+
+
+}
+
+.active {
+    border-radius: 20px;
+    width: 40px;
+
+    transition: all .2s ease-in-out;
+}
+
+.btn-parent {
+    display: flex;
+    width: 177px;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.btn {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0);
+}
+
+.show {
+    opacity: 1;
+    transform: scale(1);
+    transition: all .2s ease-in-out;
+}
+
+.hideme {
+    opacity: 0;
+    transform: scale(0);
+    transition: all .2s ease-in-out;
+}
+
+::ng-deep .invalid div {
+    border-color: var(--ion-color-danger) !important;
+}
+
+::ng-deep .invalid div>.input-placeholder {
+    color: var(--ion-color-danger) !important;
+}
+
+.button-disabled {
+    opacity: 0.7 !important;
+}
+
+::ng-deep select {
+    width: 100% !important;
+    border: none !important;
+    background-color: transparent !important;
+    :hover{
+        border: none !important;
+    }
+}
+
+
+::ng-deep select > .select-items  {
+    border: none !important;
+    background-color: transparent !important;
+
+}

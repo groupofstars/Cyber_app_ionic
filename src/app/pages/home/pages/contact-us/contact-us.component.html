@@ -1,0 +1,103 @@
+<slide-header>
+  <div class="shadow-none animate__bounceInDown animate__animated">
+    <div class="pt-4 min-h[4rem]"></div>
+
+  <div class="flex mx-3 pb-4">
+    <ion-icon (click)="back()" size="large" name="chevron-back-outline"></ion-icon>
+    <h1 class="title ml-10">Contact Us</h1>
+  </div>
+  </div>
+</slide-header>
+
+<ion-content style="  pointer-events: none;">
+  <div class="animate__bounceInDown animate__animated -mb-14 mt-2">
+    <logo></logo>
+  </div>
+
+  <div class="content-bg h-full overflow-auto px-5 mt-5 animate__bounceInUp animate__animated" style="  pointer-events: auto;">
+
+      <div class="mt-11">
+        <div class="text-2xl my-2">
+          <div>
+            Contact
+          </div>
+          <hr>
+
+          <div class="flex  mx-3 mt-5 text-2xl">
+            <div class="mr-3 mt-1">
+              <ion-icon name="logo-whatsapp"></ion-icon>
+            </div>
+            <div class="break-all text-sm sm:text-2xl place-self-center">
+              <a href="http://wa.me/{{data.whatsapp_phone}}" target="_blank" rel="noopener noreferrer">
+                {{data.whatsapp_phone}}
+              </a>
+            </div>
+          </div>
+
+          <div class="flex  mx-3 mt-5 text-2xl" *ngFor="let item of data.phone">
+            <div class="mr-3 mt-1">
+              <ion-icon name="call"></ion-icon>
+            </div>
+            <div class="break-all text-sm sm:text-2xl place-self-center">
+              <a href="http://wa.me/{{item}}" target="_blank" rel="noopener noreferrer">
+                {{item}}
+              </a>
+            </div>
+          </div>
+  
+          <div class="flex  mx-3 mt-2 text-2xl" *ngFor="let item of data.email">
+            <div class="mr-3 mt-1">
+              <ion-icon name="mail"></ion-icon>
+            </div>
+            <div class="break-all text-sm sm:text-2xl">
+              {{item}}
+            </div>
+          </div>
+  
+          <div class="flex  mx-3 mt-2 text-xl">
+            <div class="mr-3 mt-1">
+              <img ImageFallBack class="max-w-[24px]" src="/assets/world-wide-web.png" alt="" srcset="">
+            </div>
+            <div class="mb-3 break-all xl:text-xl text-sm sm:text-2xl place-self-center">
+              <a href="https://techdefendershub.com" target="_blank">https://techdefendershub.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="flex" mx-3>
+          <div class="text-2xl my-2">
+            Our Locations
+          </div>
+        </div>
+        <hr>
+  
+        <div class="mx-3">
+          <div class="flex  mx-3 mt-2">
+            <div class="mr-3 mt-1">
+              <ion-icon name="map"></ion-icon>
+            </div>
+            <div class="text-sm sm:text-2xl place-self-center">
+              <strong>Bangladesh:</strong> Banani, Kemal Ataturk Avenue, Dhaka, Bangladesh.
+            </div>
+          </div>
+  
+          <div class="flex  mx-3 mt-2">
+            <div class="mr-3 mt-1">
+              <ion-icon name="map"></ion-icon>
+            </div>
+            <div class=" text-sm sm:text-2xl place-self-center">
+              <strong>England:</strong> 17 Hanover Square, London, W1S 1BN
+            </div>
+          </div>
+  
+          <div class="flex  mx-3 mt-2">
+            <div class="mr-3 mt-1">
+              <ion-icon name="map"></ion-icon>
+            </div>
+            <div class="text-sm sm:text-2xl place-self-center">
+              <strong>Bahrain: </strong>Building 722, Al Salam Tower, Manama, Kingdom Of Bahrain
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</ion-content>
